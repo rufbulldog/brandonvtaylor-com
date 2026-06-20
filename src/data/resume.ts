@@ -22,7 +22,6 @@ export const profile = {
 	blurb:
 		"I build consumer products by bringing engineering, science, and product together.",
 	location: "Seattle, WA",
-	email: "brtaylorapps@gmail.com",
 	linkedin: "https://www.linkedin.com/in/brandontaylor",
 };
 
@@ -106,28 +105,28 @@ export const projects: Project[] = [
 		name: "Ferry Tracker",
 		period: "2025",
 		blurb:
-			"Real-time tracker for Washington State Ferries across iOS, Android, and web. Personalized “leave by” predictions come from a trimmed-mean model over your own recorded transit times, alongside live vessel, terminal, and bulletin data from the WSDOT APIs.",
-		tags: ["React Native", "Expo", "TypeScript", "AWS Lambda", "CDK"],
+			"Real-time tracker for Washington State Ferries on iOS, Android, and web. Live vessel positions, upcoming departures, and drive-up space availability, plus personalized “leave by” times from a trimmed-mean model over your own recorded crossings. Serverless AWS CDK backend on the WSDOT ferry APIs.",
+		tags: ["React Native", "Expo", "TypeScript", "AWS CDK", "Lambda"],
 	},
 	{
 		name: "Family Retreat Booking",
 		period: "2023 — Present",
 		blurb:
-			"Full-stack web app where an extended family reserves days at a shared vacation home, coordinates shared tasks, and hands off check-in details. Built hands-on across the AWS stack — Cognito, Lambda, API Gateway, DynamoDB, S3, CloudFront, Route 53, SNS, and SES — behind a React front end.",
-		tags: ["React", "AWS", "Cognito", "DynamoDB", "Serverless"],
+			"Full-stack app where an extended family reserves days at a shared vacation home — with a booking-approval workflow, shared task tracking, local weather and tides, photo sharing, and an AI chat assistant. Built hands-on across the AWS stack (Cognito, Lambda, DynamoDB, API Gateway, SES, Bedrock, S3, CloudFront) behind a cross-platform React Native front end.",
+		tags: ["React Native", "AWS", "Cognito", "Bedrock", "Serverless"],
 	},
 	{
 		name: "Birthday App",
 		period: "2025",
 		blurb:
-			"A playful, animated birthday app built as a personal gift for family — a custom cross-platform celebration that beats a paper card.",
-		tags: ["React Native", "Expo"],
+			"A custom cross-platform app built as a personal birthday gift — an animated card with ASCII art, confetti cannons, balloons, and interactive fireworks, bundled with a few homemade mini-games (basketball, Snake, and a Wordle clone).",
+		tags: ["React Native", "Expo", "TypeScript"],
 	},
 	{
 		name: "Turntable Speed",
 		period: "2025",
 		blurb:
-			"A utility for vinyl listeners that measures a record player's true playback speed and helps dial in accurate 33⅓, 45, and 78 RPM rotation.",
-		tags: ["React Native", "Expo"],
+			"Point a phone camera at a spinning record and it measures the turntable's true speed and wow-and-flutter in real time — tracking the label's rotation frame-by-frame through an FFT and phase-correlation pipeline, no test record or strobe disc required. The signal-processing core is dependency-free and unit-tested.",
+		tags: ["React Native", "Vision Camera", "Signal Processing", "TypeScript"],
 	},
 ];

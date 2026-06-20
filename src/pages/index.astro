@@ -16,10 +16,13 @@ const description =
 		<p class="hero-role">{profile.role}</p>
 		<p class="hero-blurb">{profile.blurb}</p>
 		<div class="hero-cta">
-			<a class="btn btn-primary" href={`mailto:${profile.email}`}>Email me</a>
-			<a class="btn" href={profile.linkedin} target="_blank" rel="noopener">
-				LinkedIn
-			</a>
+			<a
+				class="btn btn-primary"
+				href={profile.linkedin}
+				target="_blank"
+				rel="noopener">Connect on LinkedIn</a
+			>
+			<a class="btn" href="#projects">See projects</a>
 		</div>
 		<ul class="stats">
 			{
@@ -57,11 +60,12 @@ const description =
 	<section id="contact" class="section container">
 		<h2 class="section-title">Contact</h2>
 		<p class="prose">
-			The fastest way to reach me is <a href={`mailto:${profile.email}`}
-				>{profile.email}</a
-			> or on <a href={profile.linkedin} target="_blank" rel="noopener"
-				>LinkedIn</a
-			>. I'm always happy to talk product, platform, and team building.
+			The best way to reach me right now is on <a
+				href={profile.linkedin}
+				target="_blank"
+				rel="noopener">LinkedIn</a
+			> — a secure contact form is on the way. I'm always happy to talk product,
+			platform, and team building.
 		</p>
 	</section>
 </Base>
