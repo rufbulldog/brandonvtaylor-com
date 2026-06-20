@@ -1,0 +1,135 @@
+---
+const name = "Brandon V. Taylor";
+const tagline = "Software engineer — building things on the web and in the cloud.";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta
+			name="description"
+			content="Personal site of Brandon V. Taylor — resume and projects coming soon."
+		/>
+		<title>{name}</title>
+	</head>
+	<body>
+		<main>
+			<span class="pill">Under construction</span>
+			<h1>Hello, world <span class="wave">👋</span></h1>
+			<p class="lead">I'm <strong>{name}</strong>. {tagline}</p>
+			<p class="muted">Resume &amp; projects coming soon.</p>
+		</main>
+
+		<style>
+			:root {
+				color-scheme: light dark;
+				--bg: #fafafa;
+				--fg: #18181b;
+				--muted: #71717a;
+				--accent: #6366f1;
+				--pill-bg: #eef2ff;
+				--pill-fg: #4338ca;
+			}
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--bg: #0a0a0a;
+					--fg: #fafafa;
+					--muted: #a1a1aa;
+					--accent: #818cf8;
+					--pill-bg: #1e1b4b;
+					--pill-fg: #c7d2fe;
+				}
+			}
+			* {
+				box-sizing: border-box;
+			}
+			html,
+			body {
+				height: 100%;
+			}
+			body {
+				margin: 0;
+				display: grid;
+				place-items: center;
+				min-height: 100dvh;
+				padding: 1.5rem;
+				background: var(--bg);
+				color: var(--fg);
+				font-family:
+					-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+					Arial, sans-serif;
+				-webkit-font-smoothing: antialiased;
+			}
+			main {
+				width: 100%;
+				max-width: 34rem;
+				text-align: center;
+			}
+			.pill {
+				display: inline-block;
+				font-size: 0.8rem;
+				font-weight: 600;
+				letter-spacing: 0.02em;
+				padding: 0.35rem 0.8rem;
+				border-radius: 999px;
+				background: var(--pill-bg);
+				color: var(--pill-fg);
+				margin-bottom: 1.5rem;
+			}
+			h1 {
+				font-size: clamp(2.2rem, 6vw, 3.25rem);
+				line-height: 1.1;
+				margin: 0 0 1rem;
+				letter-spacing: -0.02em;
+			}
+			.wave {
+				display: inline-block;
+			}
+			.lead {
+				font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+				line-height: 1.6;
+				margin: 0 0 0.5rem;
+			}
+			.lead strong {
+				color: var(--accent);
+			}
+			.muted {
+				color: var(--muted);
+				margin: 0;
+			}
+			@media (prefers-reduced-motion: no-preference) {
+				.wave {
+					animation: wave 2.2s ease-in-out infinite;
+					transform-origin: 70% 70%;
+				}
+				@keyframes wave {
+					0%,
+					60%,
+					100% {
+						transform: rotate(0deg);
+					}
+					10% {
+						transform: rotate(14deg);
+					}
+					20% {
+						transform: rotate(-8deg);
+					}
+					30% {
+						transform: rotate(14deg);
+					}
+					40% {
+						transform: rotate(-4deg);
+					}
+					50% {
+						transform: rotate(10deg);
+					}
+				}
+			}
+		</style>
+	</body>
+</html>
