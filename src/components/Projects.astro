@@ -1,0 +1,22 @@
+---
+import { projects } from "../data/resume";
+---
+
+<div class="proj-grid">
+	{
+		projects.map((p) => (
+			<article class="proj-card">
+				<div class="proj-card-head">
+					<h3 class="proj-name">{p.name}</h3>
+					<span class="proj-year">{p.period}</span>
+				</div>
+				<p class="proj-blurb">{p.blurb}</p>
+				<ul class="proj-tags">
+					{p.tags.map((t) => (
+						<li>{t}</li>
+					))}
+				</ul>
+			</article>
+		))
+	}
+</div>
