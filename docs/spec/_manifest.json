@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "generated_at": "2026-06-23T03:11:23.278Z",
+  "files": {
+    "src/data/resume.ts": {
+      "content_sha256": "c84f844918300ca79eb46aa833f47defc786f2374ea4983d340bc31736e177c5",
+      "spec_path": "docs/spec/src/data/resume.md",
+      "extractor_version": "1.1.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-06-23T03:11:23.216Z"
+    }
+  },
+  "modules": {
+    "src/data": {
+      "input_hashes_sha256": "a3a178f3e7333e208a1424c9af26f8f3823a9583105e8b61baebbf0cb67892c6",
+      "spec_path": "docs/spec/src/data/_module.md",
+      "extractor_version": "1.0.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-06-23T03:11:23.275Z"
+    }
+  },
+  "systems": {
+    "architecture": {
+      "input_sha256": "823f5dced2b8108c6e19633d7cdd7ccee06dc1560a3f275bc7969bb493ca67d8",
+      "spec_path": "docs/spec/_systems/architecture.md",
+      "extractor_version": "1.0.2",
+      "renderer_version": "1.0.2",
+      "last_audited": "2026-06-23T03:11:23.278Z"
+    },
+    "ci-cd": {
+      "input_sha256": "4c287810b3d529ccaf7957071949c67946f29b07ea55a11db7ef4916cf318dba",
+      "spec_path": "docs/spec/_systems/ci-cd.md",
+      "extractor_version": "1.0.2",
+      "renderer_version": "1.0.2",
+      "last_audited": "2026-06-23T03:11:23.278Z"
+    },
+    "tech-stack": {
+      "input_sha256": "f6eb0be305960235728fc60bf9b6033785122135cad40c8227598e8eb6a6757d",
+      "spec_path": "docs/spec/_systems/tech-stack.md",
+      "extractor_version": "1.0.2",
+      "renderer_version": "1.0.2",
+      "last_audited": "2026-06-23T03:11:23.278Z"
+    }
+  }
+}
