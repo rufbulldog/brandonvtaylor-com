@@ -6,6 +6,18 @@ import { projects } from "../data/resume";
 	{
 		projects.map((p) => (
 			<article class="proj-card">
+				{p.shot && (
+					<a
+						class="proj-shot"
+						href={p.href}
+						target={p.href ? "_blank" : undefined}
+						rel={p.href ? "noopener" : undefined}
+						tabindex={p.href ? undefined : -1}
+						aria-hidden={p.href ? undefined : "true"}
+					>
+						<img src={p.shot} alt={`${p.name} screenshot`} loading="lazy" />
+					</a>
+				)}
 				<div class="proj-card-head">
 					<h3 class="proj-name">{p.name}</h3>
 					<span class="proj-year">{p.period}</span>
@@ -16,6 +28,20 @@ import { projects } from "../data/resume";
 						<li>{t}</li>
 					))}
 				</ul>
+				{(p.href || p.diagram) && (
+					<div class="proj-links">
+						{p.href && (
+							<a href={p.href} target="_blank" rel="noopener">
+								View code →
+							</a>
+						)}
+						{p.diagram && (
+							<a href={p.diagram} target="_blank" rel="noopener">
+								Architecture →
+							</a>
+						)}
+					</div>
+				)}
 			</article>
 		))
 	}

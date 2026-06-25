@@ -1,18 +1,48 @@
 ---
-import { experience } from "../data/resume";
+import { experience, journey } from "../data/resume";
 ---
+
+<ul class="journey" aria-label="Products and surfaces I've shipped">
+	{
+		journey.map((j) => (
+			<li class="journey-item">
+				<img
+					class="journey-logo"
+					src={j.logo}
+					alt={`${j.label} logo`}
+					loading="lazy"
+					width="44"
+					height="44"
+				/>
+				<span class="journey-label">{j.label}</span>
+			</li>
+		))
+	}
+</ul>
 
 <ul class="exp-list">
 	{
 		experience.map((role) => (
 			<li class="exp-item">
 				<div class="exp-head">
-					<div>
-						<h3 class="exp-title">{role.title}</h3>
-						<p class="exp-company">
-							{role.company}
-							{role.location ? ` · ${role.location}` : ""}
-						</p>
+					<div class="exp-headings">
+						{role.logo && (
+							<img
+								class="exp-logo"
+								src={role.logo}
+								alt={`${role.company} logo`}
+								loading="lazy"
+								width="40"
+								height="40"
+							/>
+						)}
+						<div>
+							<h3 class="exp-title">{role.title}</h3>
+							<p class="exp-company">
+								{role.company}
+								{role.location ? ` · ${role.location}` : ""}
+							</p>
+						</div>
 					</div>
 					<span class="exp-period">{role.period}</span>
 				</div>
@@ -21,6 +51,19 @@ import { experience } from "../data/resume";
 						<li>{h}</li>
 					))}
 				</ul>
+				{role.details && role.details.length > 0 && (
+					<details class="exp-details">
+						<summary>
+							<span class="exp-details-more">Read more</span>
+							<span class="exp-details-less">Show less</span>
+						</summary>
+						<div class="exp-narrative">
+							{role.details.map((d) => (
+								<p>{d}</p>
+							))}
+						</div>
+					</details>
+				)}
 			</li>
 		))
 	}

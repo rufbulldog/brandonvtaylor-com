@@ -43,6 +43,10 @@ const year = 2026;
 		<footer class="site-footer">
 			<div class="container footer-inner">
 				<p>© {year} Brandon V. Taylor</p>
+				<nav class="footer-social">
+					<a href="https://www.linkedin.com/in/brandontaylor" target="_blank" rel="noopener">LinkedIn</a>
+					<a href="https://github.com/rufbulldog" target="_blank" rel="noopener">GitHub</a>
+				</nav>
 				<p class="muted">Built with Astro · hosted on AWS Amplify</p>
 			</div>
 		</footer>
@@ -331,6 +335,147 @@ const year = 2026;
 			}
 			.exp-bullets li::marker {
 				color: var(--accent);
+			}
+
+			.exp-headings {
+				display: flex;
+				align-items: flex-start;
+				gap: 0.85rem;
+			}
+			.exp-logo {
+				flex: none;
+				width: 40px;
+				height: 40px;
+				object-fit: contain;
+				border-radius: 8px;
+				background: var(--surface-2);
+				border: 1px solid var(--border);
+				padding: 4px;
+			}
+			.exp-details {
+				margin-top: 0.85rem;
+			}
+			.exp-details > summary {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.35rem;
+				cursor: pointer;
+				list-style: none;
+				font-size: 0.9rem;
+				font-weight: 600;
+				color: var(--accent);
+				width: fit-content;
+			}
+			.exp-details > summary::-webkit-details-marker {
+				display: none;
+			}
+			.exp-details > summary::before {
+				content: "\203A";
+				display: inline-block;
+				transition: transform 0.15s ease;
+				font-size: 1.1em;
+				line-height: 1;
+			}
+			.exp-details[open] > summary::before {
+				transform: rotate(90deg);
+			}
+			.exp-details > summary:hover {
+				text-decoration: underline;
+			}
+			.exp-details .exp-details-less {
+				display: none;
+			}
+			.exp-details[open] .exp-details-more {
+				display: none;
+			}
+			.exp-details[open] .exp-details-less {
+				display: inline;
+			}
+			.exp-narrative {
+				margin-top: 0.75rem;
+				max-width: 44rem;
+				color: var(--muted);
+			}
+			.exp-narrative p {
+				margin: 0 0 0.85rem;
+			}
+			.exp-narrative p:last-child {
+				margin-bottom: 0;
+			}
+
+			/* Project links */
+			.proj-links {
+				display: flex;
+				gap: 1rem;
+				margin-top: 1rem;
+			}
+			.proj-links a {
+				font-size: 0.86rem;
+				font-weight: 600;
+			}
+
+			/* Career journey strip */
+			.journey {
+				list-style: none;
+				margin: 0 0 2.5rem;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1.25rem 1.75rem;
+				align-items: flex-start;
+			}
+			.journey-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.4rem;
+				width: 4.25rem;
+				text-align: center;
+			}
+			.journey-logo {
+				width: 44px;
+				height: 44px;
+				object-fit: contain;
+				border-radius: 10px;
+				border: 1px solid var(--border);
+				background: var(--surface-2);
+			}
+			.journey-label {
+				font-size: 0.72rem;
+				font-weight: 600;
+				color: var(--muted);
+				line-height: 1.2;
+			}
+
+			/* Project screenshot */
+			.proj-shot {
+				display: block;
+				margin: -0.2rem 0 1rem;
+				border-radius: 10px;
+				overflow: hidden;
+				border: 1px solid var(--border);
+				background: var(--surface-2);
+				line-height: 0;
+			}
+			.proj-shot img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+			.proj-shot:hover {
+				border-color: var(--accent);
+			}
+
+			/* Footer social */
+			.footer-social {
+				display: flex;
+				gap: 1rem;
+			}
+			.footer-social a {
+				color: var(--muted);
+			}
+			.footer-social a:hover {
+				color: var(--fg);
 			}
 
 			/* Projects */
