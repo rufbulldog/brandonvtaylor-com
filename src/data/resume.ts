@@ -33,6 +33,8 @@ export interface Project {
 	diagram?: string;
 	/** Screenshot path under /public (e.g. "/shots/ferry.png"). Renders when set. */
 	shot?: string;
+	/** 1–3 phone screenshots — renders a portrait gallery (takes priority over `shot`). */
+	screens?: { src: string; caption?: string }[];
 }
 
 /**

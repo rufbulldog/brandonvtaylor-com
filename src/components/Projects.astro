@@ -6,7 +6,16 @@ import { projects } from "../data/resume";
 	{
 		projects.map((p) => (
 			<article class="proj-card">
-				{p.shot && (
+				{p.screens && p.screens.length > 0 ? (
+					<div class="proj-screens">
+						{p.screens.map((s) => (
+							<figure class="proj-screen">
+								<img src={s.src} alt={s.caption ?? `${p.name} screenshot`} loading="lazy" />
+								{s.caption && <figcaption>{s.caption}</figcaption>}
+							</figure>
+						))}
+					</div>
+				) : p.shot ? (
 					<a
 						class="proj-shot"
 						href={p.href}
@@ -17,7 +26,7 @@ import { projects } from "../data/resume";
 					>
 						<img src={p.shot} alt={`${p.name} screenshot`} loading="lazy" />
 					</a>
-				)}
+				) : null}
 				<div class="proj-card-head">
 					<h3 class="proj-name">{p.name}</h3>
 					<span class="proj-year">{p.period}</span>
