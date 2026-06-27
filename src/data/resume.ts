@@ -18,6 +18,8 @@ export interface Role {
 	image?: string;
 	/** Optional caption shown beneath an inline image. */
 	imageCaption?: string;
+	/** Optional set of screenshots — renders as a small inline gallery (collapsed). */
+	gallery?: { src: string; caption?: string }[];
 }
 
 export interface Project {
@@ -45,6 +47,16 @@ export const journey = [
 	{ label: "HoloLens", logo: "/logos/hololens.svg" },
 	{ label: "Alexa", logo: "/logos/alexa.svg" },
 	{ label: "Amazon", logo: "/logos/amazon.svg" },
+];
+
+/** Logo attributions. All public domain, sourced via Wikimedia Commons. */
+export const imageCredits = [
+	{ label: "Amazon logo", credit: "Amazon.com, Inc. / Koto", href: "https://commons.wikimedia.org/w/index.php?curid=151038672" },
+	{ label: "Amazon Alexa logo", credit: "Amazon.com, Inc.", href: "https://commons.wikimedia.org/w/index.php?curid=69142563" },
+	{ label: "Bing logo", credit: "Microsoft (SVG by Gage Skidmore)", href: "https://commons.wikimedia.org/w/index.php?curid=7019942" },
+	{ label: "Skype logo", credit: "Skype / Microsoft", href: "https://commons.wikimedia.org/w/index.php?curid=48483739" },
+	{ label: "Microsoft HoloLens logo", credit: "Microsoft", href: "https://commons.wikimedia.org/w/index.php?curid=77478467" },
+	{ label: "Microsoft Office 2007 logo", credit: "Jayarathina", href: "https://commons.wikimedia.org/w/index.php?curid=36250168" },
 ];
 
 export const profile = {
@@ -144,6 +156,10 @@ export const experience: Role[] = [
 		details: [
 			"I doubled mobile monthly active users while migrating mobile onto a shared backend with Bing desktop and compressing release cadence from quarterly to daily — a full CI/CD modernization.",
 			"On the side I designed and launched bSeattle, a Windows Phone restaurant-discovery app with ML-generated dish summaries that held a 4.5-star lifetime rating.",
+		],
+		gallery: [
+			{ src: "/shots/bseattle-buzz.svg", caption: "bSeattle — neighborhood buzz" },
+			{ src: "/shots/bseattle-localfavs.svg", caption: "bSeattle — local favorites" },
 		],
 	},
 	{

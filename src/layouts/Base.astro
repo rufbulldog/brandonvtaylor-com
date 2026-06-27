@@ -3,6 +3,7 @@ interface Props {
 	title: string;
 	description: string;
 }
+import { imageCredits } from "../data/resume";
 const { title, description } = Astro.props;
 const year = 2026;
 ---
@@ -48,6 +49,23 @@ const year = 2026;
 					<a href="https://github.com/rufbulldog" target="_blank" rel="noopener">GitHub</a>
 				</nav>
 				<p class="muted">Built with Astro · hosted on AWS Amplify</p>
+			</div>
+			<div class="container">
+				<details class="credits">
+					<summary>Image credits</summary>
+					<ul>
+						{
+							imageCredits.map((c) => (
+								<li>
+									{c.label} — {c.credit}, Public Domain, via{" "}
+									<a href={c.href} target="_blank" rel="noopener">
+										Wikimedia Commons
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</details>
 			</div>
 		</footer>
 
@@ -448,6 +466,31 @@ const year = 2026;
 				color: var(--muted);
 			}
 
+			/* Experience: screenshot gallery */
+			.exp-gallery {
+				margin: 1rem 0 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+			.exp-shot {
+				margin: 0;
+				width: 9rem;
+			}
+			.exp-shot img {
+				width: 100%;
+				height: auto;
+				display: block;
+				border-radius: 10px;
+				border: 1px solid var(--border);
+				background: var(--surface-2);
+			}
+			.exp-shot figcaption {
+				margin-top: 0.4rem;
+				font-size: 0.8rem;
+				color: var(--muted);
+			}
+
 			/* Project links */
 			.proj-links {
 				display: flex;
@@ -509,6 +552,24 @@ const year = 2026;
 			}
 			.proj-shot:hover {
 				border-color: var(--accent);
+			}
+
+			/* Image credits */
+			.credits {
+				margin: 0 auto 1.5rem;
+				font-size: 0.8rem;
+				color: var(--muted);
+			}
+			.credits > summary {
+				cursor: pointer;
+				width: fit-content;
+			}
+			.credits ul {
+				margin: 0.6rem 0 0;
+				padding-left: 1.1rem;
+				display: flex;
+				flex-direction: column;
+				gap: 0.25rem;
 			}
 
 			/* Footer social */

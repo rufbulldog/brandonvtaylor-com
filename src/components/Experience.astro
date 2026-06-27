@@ -51,7 +51,7 @@ import { experience, journey } from "../data/resume";
 						<li>{h}</li>
 					))}
 				</ul>
-				{(role.video || role.image || (role.details && role.details.length > 0)) && (
+				{(role.video || role.image || role.gallery || (role.details && role.details.length > 0)) && (
 					<details class="exp-details">
 						<summary>
 							<span class="exp-details-more">Read more</span>
@@ -70,6 +70,16 @@ import { experience, journey } from "../data/resume";
 										<figcaption>{role.imageCaption}</figcaption>
 									)}
 								</figure>
+							)}
+							{role.gallery && (
+								<div class="exp-gallery">
+									{role.gallery.map((g) => (
+										<figure class="exp-shot">
+											<img src={g.src} alt={g.caption ?? `${role.company} screenshot`} loading="lazy" />
+											{g.caption && <figcaption>{g.caption}</figcaption>}
+										</figure>
+									))}
+								</div>
 							)}
 							{role.video && (
 								<figure class="exp-video">
