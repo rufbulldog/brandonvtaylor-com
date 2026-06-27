@@ -14,6 +14,10 @@ export interface Role {
 	video?: string;
 	/** Optional caption shown beneath an embedded video. */
 	videoCaption?: string;
+	/** Optional product image path under /public — renders inline (collapsed). */
+	image?: string;
+	/** Optional caption shown beneath an inline image. */
+	imageCaption?: string;
 }
 
 export interface Project {
@@ -104,6 +108,11 @@ export const experience: Role[] = [
 			"Product manager for the launch of calling and messaging on Alexa, including the Echo Show; delivered two pre-launch demos to Jeff Bezos.",
 			"Shipped in-home family communications — “Alexa, make an announcement” and voice-message-to-SMS.",
 		],
+		details: [
+			"I was the PM for bringing voice and video calling and messaging to Alexa — the first communications experience on the platform — and for the launch of the Echo Show, Alexa's first device with a screen.",
+		],
+		image: "/shots/echo-show.svg",
+		imageCaption: "Amazon Echo Show (1st gen) — the launch device for calling and messaging on Alexa.",
 	},
 	{
 		company: "Skype · Microsoft",
@@ -138,13 +147,13 @@ export const experience: Role[] = [
 		],
 	},
 	{
-		company: "Microsoft — Lync & Office / SharePoint",
+		company: "Microsoft — Office, SharePoint & Communicator",
 		logo: "/logos/microsoft.svg",
 		title: "Product Owner",
 		location: "Zurich & Redmond",
 		period: "2001 — 2010",
 		highlights: [
-			"Launched Lync Attendant and shipped group video calling and delegation in Lync 2007 (Zurich).",
+			"Launched Communicator 2007 Attendant and shipped group video calling and delegation in Office Communicator 2007 (Zurich).",
 			"Product owner for enterprise document management in Office 2007 and the server-side antivirus API for SharePoint.",
 		],
 	},

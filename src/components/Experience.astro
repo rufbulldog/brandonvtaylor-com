@@ -51,7 +51,7 @@ import { experience, journey } from "../data/resume";
 						<li>{h}</li>
 					))}
 				</ul>
-				{(role.video || (role.details && role.details.length > 0)) && (
+				{(role.video || role.image || (role.details && role.details.length > 0)) && (
 					<details class="exp-details">
 						<summary>
 							<span class="exp-details-more">Read more</span>
@@ -59,6 +59,18 @@ import { experience, journey } from "../data/resume";
 						</summary>
 						<div class="exp-narrative">
 							{role.details?.map((d) => <p>{d}</p>)}
+							{role.image && (
+								<figure class="exp-image">
+									<img
+										src={role.image}
+										alt={role.imageCaption ?? `${role.company} product`}
+										loading="lazy"
+									/>
+									{role.imageCaption && (
+										<figcaption>{role.imageCaption}</figcaption>
+									)}
+								</figure>
+							)}
 							{role.video && (
 								<figure class="exp-video">
 									<div class="exp-video-frame">
