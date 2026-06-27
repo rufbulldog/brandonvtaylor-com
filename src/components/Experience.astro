@@ -51,16 +51,39 @@ import { experience, journey } from "../data/resume";
 						<li>{h}</li>
 					))}
 				</ul>
-				{role.details && role.details.length > 0 && (
+				{(role.video || (role.details && role.details.length > 0)) && (
 					<details class="exp-details">
 						<summary>
 							<span class="exp-details-more">Read more</span>
 							<span class="exp-details-less">Show less</span>
 						</summary>
 						<div class="exp-narrative">
-							{role.details.map((d) => (
-								<p>{d}</p>
-							))}
+							{role.details?.map((d) => <p>{d}</p>)}
+							{role.video && (
+								<figure class="exp-video">
+									<div class="exp-video-frame">
+										<iframe
+											src={`https://www.youtube-nocookie.com/embed/${role.video}`}
+											title={role.videoCaption ?? `${role.company} video`}
+											loading="lazy"
+											frameborder="0"
+											allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+											referrerpolicy="strict-origin-when-cross-origin"
+											allowfullscreen
+										/>
+									</div>
+									{role.videoCaption && (
+										<figcaption>
+											{role.videoCaption}{" "}
+											<a
+												href={`https://youtu.be/${role.video}`}
+												target="_blank"
+												rel="noopener">Watch on YouTube →</a
+											>
+										</figcaption>
+									)}
+								</figure>
+							)}
 						</div>
 					</details>
 				)}

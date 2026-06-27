@@ -10,6 +10,10 @@ export interface Role {
 	details?: string[];
 	/** Optional logo path under /public (e.g. "/logos/amazon.svg"). Renders when set. */
 	logo?: string;
+	/** Optional YouTube video ID — renders a responsive inline player. */
+	video?: string;
+	/** Optional caption shown beneath an embedded video. */
+	videoCaption?: string;
 }
 
 export interface Project {
@@ -107,6 +111,9 @@ export const experience: Role[] = [
 		title: "Senior Product Manager Lead",
 		location: "London, UK",
 		period: "2013 — 2016",
+		video: "AWLncecL2Wc",
+		videoCaption:
+			"Skype on HoloLens — an AR call connecting to the International Space Station.",
 		highlights: [
 			"Led the PM team owning strategy and roadmap for next-generation Skype messaging; built a web-based messaging experience hosted inside the native iOS and Android apps.",
 			"Product owner for Skype on HoloLens — AR video calls with drawing and photo insertion; flown to the International Space Station and used in orbit by astronaut Scott Kelly.",

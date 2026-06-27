@@ -403,6 +403,33 @@ const year = 2026;
 				margin-bottom: 0;
 			}
 
+			/* Experience: inline video */
+			.exp-video {
+				margin: 1rem 0 0;
+				max-width: 30rem;
+			}
+			.exp-video-frame {
+				position: relative;
+				width: 100%;
+				aspect-ratio: 16 / 9;
+				border-radius: 10px;
+				overflow: hidden;
+				border: 1px solid var(--border);
+				background: #000;
+			}
+			.exp-video-frame iframe {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+			.exp-video figcaption {
+				margin-top: 0.5rem;
+				font-size: 0.85rem;
+				color: var(--muted);
+			}
+
 			/* Project links */
 			.proj-links {
 				display: flex;
