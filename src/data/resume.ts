@@ -185,6 +185,10 @@ export const projects: Project[] = [
 			"Real-time tracker for Washington State Ferries on iOS, Android, and web. Live vessel positions, upcoming departures, and drive-up space availability, plus personalized “leave by” times from a trimmed-mean model over your own recorded crossings. Serverless AWS CDK backend on the WSDOT ferry APIs.",
 		tags: ["React Native", "Expo", "TypeScript", "AWS CDK", "Lambda"],
 		shot: "/shots/ferry.svg",
+		screens: [
+			{ src: "/shots/ferry-2.webp", caption: "Personalized ‘leave by’ time" },
+			{ src: "/shots/ferry-1.webp", caption: "Live departures & capacity" },
+		],
 		href: "https://github.com/rufbulldog/ferry-tracker",
 		diagram: "https://github.com/rufbulldog/ferry-tracker#system-architecture",
 	},
@@ -195,6 +199,10 @@ export const projects: Project[] = [
 			"Full-stack app where an extended family reserves days at a shared vacation home — with a booking-approval workflow, shared task tracking, local weather and tides, photo sharing, and an AI chat assistant. Built hands-on across the AWS stack (Cognito, Lambda, DynamoDB, API Gateway, SES, Bedrock, S3, CloudFront) behind a cross-platform React Native front end.",
 		tags: ["React Native", "AWS", "Cognito", "Bedrock", "Serverless"],
 		shot: "/shots/family-retreat.svg",
+		screens: [
+			{ src: "/shots/family-retreat-1.webp", caption: "Home — bookings, tasks, tides & weather" },
+			{ src: "/shots/family-retreat-2.webp", caption: "Shared family photo feed" },
+		],
 	},
 	{
 		name: "Birthday App",
@@ -211,5 +219,9 @@ export const projects: Project[] = [
 			"Point a phone camera at a spinning record and it measures the turntable's true speed and wow-and-flutter in real time — tracking the label's rotation frame-by-frame through an FFT and phase-correlation pipeline, no test record or strobe disc required. The signal-processing core is dependency-free and unit-tested.",
 		tags: ["React Native", "Vision Camera", "Signal Processing", "TypeScript"],
 		shot: "/shots/turntable.svg",
+		screens: [
+			{ src: "/shots/turntable-1.webp", caption: "Live RPM & wow-and-flutter" },
+			{ src: "/shots/turntable-2.webp", caption: "Calibration result" },
+		],
 	},
 ];
