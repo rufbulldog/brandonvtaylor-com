@@ -357,18 +357,22 @@ const year = 2026;
 
 			.exp-headings {
 				display: flex;
+				flex-direction: column;
 				align-items: flex-start;
-				gap: 0.85rem;
 			}
 			.exp-logo {
-				flex: none;
-				width: 40px;
-				height: 40px;
+				display: block;
+				height: 48px;
+				width: auto;
+				max-width: 200px;
+				margin: 0 0 0.75rem;
+				padding: 9px 14px;
+				box-sizing: border-box;
 				object-fit: contain;
-				border-radius: 8px;
-				background: var(--surface-2);
+				background: #ffffff;
 				border: 1px solid var(--border);
-				padding: 4px;
+				border-radius: 10px;
+				box-shadow: var(--shadow);
 			}
 			.exp-details {
 				margin-top: 0.85rem;
@@ -521,12 +525,13 @@ const year = 2026;
 				text-align: center;
 			}
 			.journey-logo {
-				width: 44px;
-				height: 44px;
+				width: 56px;
+				height: 56px;
 				object-fit: contain;
+				padding: 6px;
 				border-radius: 10px;
 				border: 1px solid var(--border);
-				background: var(--surface-2);
+				background: #ffffff;
 			}
 			.journey-label {
 				font-size: 0.72rem;
