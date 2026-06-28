@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import Testimonials from "../components/Testimonials.astro";
+import Icon from "../components/Icon.astro";
 import { profile, about, stats, education } from "../data/resume";
 
 const title = `${profile.name} — ${profile.role}`;
@@ -20,8 +21,8 @@ const description =
 				<p class="hero-blurb">{profile.blurb}</p>
 				<div class="hero-cta">
 					<a class="btn btn-primary" href="/resume">View résumé</a>
-					<a class="btn" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
-					<a class="btn" href={profile.github} target="_blank" rel="noopener">GitHub</a>
+					<a class="btn btn-social btn-linkedin" href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
+					<a class="btn btn-social btn-github" href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
 					<a class="btn" href="#projects">See projects</a>
 				</div>
 			</div>
@@ -85,16 +86,13 @@ const description =
 
 	<section id="contact" class="section container accent-rose">
 		<h2 class="section-title">Contact</h2>
-		<p class="prose">
-			The best way to reach me is on <a
-				href={profile.linkedin}
-				target="_blank"
-				rel="noopener">LinkedIn</a
-			>. My code is on <a
-				href={profile.github}
-				target="_blank"
-				rel="noopener">GitHub</a
-			>. I'm always happy to talk product, platform, and team building.
+		<p class="section-lead" style="margin-bottom:1.25rem">
+			Always happy to talk product, platform, and team building.
 		</p>
+		<div class="contact-actions">
+			<a class="btn btn-social btn-email" href="mailto:brtaylorapps@gmail.com"><Icon name="mail" />Email</a>
+			<a class="btn btn-social btn-linkedin" href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
+			<a class="btn btn-social btn-github" href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
+		</div>
 	</section>
 </Base>
