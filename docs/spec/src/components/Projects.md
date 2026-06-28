@@ -2,16 +2,16 @@
 type: l1-file
 spec_version: 1
 source: src/components/Projects.astro
-content_sha: f35e84f6409297c5c26ee6f1833a114ea5399fe974ee4b493ebfbc4e307a0dab
+content_sha: ddcc110e014cd7565e43e00e4b564b2dc99cef80480c46cb0e10cf1018d4b25e
 extractor_version: 1.1.0
 renderer_version: 1.0.0
-last_audited: 2026-06-23T05:21:42.195Z
+last_audited: 2026-06-28T17:51:01.097Z
 ---
 
 # Projects.astro
 
 **Path:** `src/components/Projects.astro`
-**Lines:** 23
+**Lines:** 89
 **Language:** Astro
 
 ## Imports

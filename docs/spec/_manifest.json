@@ -1,80 +1,101 @@
 {
   "version": 2,
-  "generated_at": "2026-06-23T05:21:42.224Z",
+  "generated_at": "2026-06-28T18:19:20.530Z",
   "files": {
     "src/components/Experience.astro": {
-      "content_sha256": "ec24f25d57b45778c653ca7e8f9df3f55d4be11a6836551f967a2245bfa1cdac",
+      "content_sha256": "b1df205500dac9cc81fa2cde23df5a400ba859d45a25c0d441ca072da895a97a",
       "spec_path": "docs/spec/src/components/Experience.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T05:21:42.141Z"
+      "last_audited": "2026-06-28T17:51:01.038Z"
+    },
+    "src/components/Icon.astro": {
+      "content_sha256": "c4b196dbb429e214db0860113627a305ee73169acdaad4d10b69aed1d01e0ed0",
+      "spec_path": "docs/spec/src/components/Icon.md",
+      "extractor_version": "1.0.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-06-28T17:51:01.089Z"
     },
     "src/components/Projects.astro": {
-      "content_sha256": "f35e84f6409297c5c26ee6f1833a114ea5399fe974ee4b493ebfbc4e307a0dab",
+      "content_sha256": "ddcc110e014cd7565e43e00e4b564b2dc99cef80480c46cb0e10cf1018d4b25e",
       "spec_path": "docs/spec/src/components/Projects.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T05:21:42.195Z"
+      "last_audited": "2026-06-28T17:51:01.097Z"
+    },
+    "src/components/Testimonials.astro": {
+      "content_sha256": "91d5de5b4bd7d05870c55e6dfd90edd6e6468baa397d666a0da772cf8a954b7d",
+      "spec_path": "docs/spec/src/components/Testimonials.md",
+      "extractor_version": "1.0.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-06-28T17:51:01.104Z"
     },
     "src/data/resume.ts": {
-      "content_sha256": "c84f844918300ca79eb46aa833f47defc786f2374ea4983d340bc31736e177c5",
+      "content_sha256": "fccbf2ffc149e85a08ffff66e6fa0ddaaf282ded92c5212c5caa973f7a00614c",
       "spec_path": "docs/spec/src/data/resume.md",
       "extractor_version": "1.1.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T03:11:23.216Z"
+      "last_audited": "2026-06-28T17:51:01.109Z"
     },
     "src/layouts/Base.astro": {
-      "content_sha256": "c908ad8499316398b56ca3643c6958e7ec6d929409e4645de54a51a0e9a183f2",
+      "content_sha256": "37ec9f0ff9b93262e9cf0efdda897babe4ae98311a839cdd8f4d1fb0ea2cb3fe",
       "spec_path": "docs/spec/src/layouts/Base.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T05:21:42.209Z"
+      "last_audited": "2026-06-28T17:51:01.115Z"
     },
     "src/pages/index.astro": {
-      "content_sha256": "2d939bde617d760436861bb9e317818c57b7de49f6c456c3bfc0b4b045d07f7a",
+      "content_sha256": "57d04f4f469f4c84251266bd7b9c86e8fcbfb10de2ea36eb4f042b4dd21d70af",
       "spec_path": "docs/spec/src/pages/index.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T05:21:42.214Z"
+      "last_audited": "2026-06-28T17:51:01.125Z"
+    },
+    "src/pages/resume.astro": {
+      "content_sha256": "fe1614fd1c763fa9be0603a0be9ef7439546a8c468256898b7f57952fb96f25f",
+      "spec_path": "docs/spec/src/pages/resume.md",
+      "extractor_version": "1.0.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-06-28T17:51:01.134Z"
     }
   },
   "modules": {
     "src/components": {
-      "input_hashes_sha256": "32a0c42fbf2c67aa46dc93e2d42a835f5a26d50cebdfbae0988cd0cecb6de673",
+      "input_hashes_sha256": "bca7f79da0965af6b7c959c8446d877e9046c4438d0f31256b8c7bb150509b1a",
       "spec_path": "docs/spec/src/components/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T05:21:42.221Z"
+      "last_audited": "2026-06-28T17:51:01.139Z"
     },
     "src/data": {
-      "input_hashes_sha256": "a3a178f3e7333e208a1424c9af26f8f3823a9583105e8b61baebbf0cb67892c6",
+      "input_hashes_sha256": "f6b8fe23ddce032f15fab237420f240ea723b4a20d1e9416cab125bf8c1c7f21",
       "spec_path": "docs/spec/src/data/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T03:11:23.275Z"
+      "last_audited": "2026-06-28T17:51:01.139Z"
     },
     "src/layouts": {
-      "input_hashes_sha256": "67fa3a295098bfcd3d07d2cc8c21ec9b4100b2d465bc96066b48737028ae168e",
+      "input_hashes_sha256": "a33fcd0a178c3624007afa933c4aaf88ba1e55dec90ff8e421a0a09b081a4ca2",
       "spec_path": "docs/spec/src/layouts/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T05:21:42.221Z"
+      "last_audited": "2026-06-28T17:51:01.140Z"
     },
     "src/pages": {
-      "input_hashes_sha256": "f75d736fb4417e20e502dddcbea01415bbdaa8d67a2699b4d464bb63efb6cf71",
+      "input_hashes_sha256": "a887fbe363ca3476d2ea299fb8edc2862b1e87ef7562a0bec2f9f72417de4242",
       "spec_path": "docs/spec/src/pages/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-23T05:21:42.221Z"
+      "last_audited": "2026-06-28T17:51:01.140Z"
     }
   },
   "systems": {
     "architecture": {
-      "input_sha256": "c583d93975ca007395d3811a48532ab72d4e61da7216bc9674b710cafd80925b",
+      "input_sha256": "f853513d04590f3a02b87e100e9c3854b7f8a2613cdd7f71be583a8fdbbe63c7",
       "spec_path": "docs/spec/_systems/architecture.md",
       "extractor_version": "1.0.2",
       "renderer_version": "1.0.2",
-      "last_audited": "2026-06-23T05:21:42.224Z"
+      "last_audited": "2026-06-28T17:51:01.143Z"
     },
     "ci-cd": {
       "input_sha256": "4c287810b3d529ccaf7957071949c67946f29b07ea55a11db7ef4916cf318dba",
@@ -84,11 +105,11 @@
       "last_audited": "2026-06-23T03:11:23.278Z"
     },
     "tech-stack": {
-      "input_sha256": "f6eb0be305960235728fc60bf9b6033785122135cad40c8227598e8eb6a6757d",
+      "input_sha256": "932312117a1d99d154c68534211b1163d3a456ca1e28dbbd6b55827cd2931f43",
       "spec_path": "docs/spec/_systems/tech-stack.md",
       "extractor_version": "1.0.2",
       "renderer_version": "1.0.2",
-      "last_audited": "2026-06-23T03:11:23.278Z"
+      "last_audited": "2026-06-28T18:19:20.529Z"
     }
   }
 }

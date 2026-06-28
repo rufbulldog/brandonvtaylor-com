@@ -2,29 +2,31 @@
 type: l2-module
 spec_version: 1
 path: src/pages
-file_count: 1
-total_lines: 71
+file_count: 2
+total_lines: 164
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-06-23T05:21:42.221Z
+last_audited: 2026-06-28T17:51:01.140Z
 ---
 
 # src/pages — Module Spec
 
 **Folder:** `src/pages`
-**Files:** 1 · **Lines:** 71
+**Files:** 2 · **Lines:** 164
 
 ## File inventory
 
 | File | Lines | Purpose |
 |---|---|---|
-| [`index.astro`](./index.md) | 71 |  |
+| [`index.astro`](./index.md) | 99 |  |
+| [`resume.astro`](./resume.md) | 65 |  |
 
 ## Internal-only files
 
 Files in this folder not imported by any file outside it (candidates for cleanup or relocation):
 
 - `index.astro`
+- `resume.astro`
 
 ## Cross-refs
 

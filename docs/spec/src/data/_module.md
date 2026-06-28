@@ -3,28 +3,34 @@ type: l2-module
 spec_version: 1
 path: src/data
 file_count: 1
-total_lines: 133
+total_lines: 266
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-06-23T03:11:23.275Z
+last_audited: 2026-06-28T17:51:01.139Z
 ---
 
 # src/data — Module Spec
 
 **Folder:** `src/data`
-**Files:** 1 · **Lines:** 133
+**Files:** 1 · **Lines:** 266
 
 ## File inventory
 
 | File | Lines | Purpose |
 |---|---|---|
-| [`resume.ts`](./resume.md) | 133 |  |
+| [`resume.ts`](./resume.md) | 266 |  |
 
-## Internal-only files
+## Public surface
 
-Files in this folder not imported by any file outside it (candidates for cleanup or relocation):
+Files in this folder imported from elsewhere:
 
-- `resume.ts`
+- `resume.ts` — used by 6 files
+  - `src/components/Experience.astro`
+  - `src/components/Projects.astro`
+  - `src/components/Testimonials.astro`
+  - `src/layouts/Base.astro`
+  - `src/pages/index.astro`
+  - `src/pages/resume.astro`
 
 ## Cross-refs
 

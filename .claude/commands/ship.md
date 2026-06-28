@@ -2,7 +2,7 @@
 description: Ship brandonvtaylor.com — build check, spec reconcile, commit, push to main (Amplify auto-deploys). Instance of the dev-utils /ship template.
 ---
 
-You are running the `/ship` playbook for brandonvtaylor-com — an instance of the shared ship template ([`rufbulldog/dev-utils`](https://github.com/rufbulldog/dev-utils) `skills/ship/TEMPLATE.md`). An **Astro** site on **AWS Amplify**: single `main` branch, and **deploy = push to `main`** → Amplify builds and serves brandonvtaylor.com. There is no app/TestFlight build and no test suite, so this is the lightest instance of the template.
+You are running the `/ship` playbook for brandonvtaylor-com — an instance of the shared ship template ([`rufbulldog/dev-utils`](https://github.com/rufbulldog/dev-utils) `skills/ship/TEMPLATE.md`). An **Astro** site on **AWS Amplify**: single `main` branch, and **deploy = push to `main`** → Amplify builds and serves brandonvtaylor.com.
 
 # Pre-flight
 1. Confirm working dir is `/Users/brandontaylor/Coding/brandonvtaylor-com` and branch is `main`.
@@ -16,12 +16,18 @@ npm run build
 ```
 If it errors, fix the cause before proceeding. Skip only for a pure docs/config diff that can't affect the build.
 
-# Step 1.5: Reconcile spec
+# Step 1.5: Run tests
+```bash
+npm test
+```
+If any test fails, fix the cause before proceeding.
+
+# Step 1.6: Reconcile spec
 Reconcile the auto-generated spec so it commits with the change:
 ```bash
 spec extract
 ```
-Stage the changed `docs/spec/**.md`. (Shared `spec` CLI; `cd <path>/dev-utils/packages/spec && npm link` if not on PATH. No CI spec gate here, so this is the only thing keeping the spec current.)
+Stage the changed `docs/spec/**/*.md`. (Shared `spec` CLI; `cd <path>/dev-utils/packages/spec && npm link` if not on PATH. No CI spec gate here, so this is the only thing keeping the spec current.)
 
 # Step 2: Local preview (optional, user-gated)
 If the change is visual, offer a local look and wait for confirmation:

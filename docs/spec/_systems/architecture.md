@@ -6,7 +6,7 @@ discovered_from: code-graph + repo config
 resource_count: 4
 extractor_version: 1.0.2
 renderer_version: 1.0.2
-last_audited: 2026-06-23T05:21:42.221Z
+last_audited: 2026-06-28T17:51:01.140Z
 ---
 
 # Architecture overview — System Spec
@@ -24,6 +24,7 @@ flowchart LR
   n_src_layouts["src/layouts"]
   n_src_pages["src/pages"]
   n_src_components --> n_src_data
+  n_src_layouts --> n_src_data
   n_src_pages --> n_src_components
   n_src_pages --> n_src_data
   n_src_pages --> n_src_layouts

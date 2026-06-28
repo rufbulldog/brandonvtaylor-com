@@ -3,10 +3,10 @@ type: l3-system
 spec_version: 1
 name: tech-stack
 discovered_from: code-graph + repo config
-resource_count: 2
+resource_count: 3
 extractor_version: 1.0.2
 renderer_version: 1.0.2
-last_audited: 2026-06-23T03:11:23.275Z
+last_audited: 2026-06-28T18:19:20.525Z
 ---
 
 # Technology stack — System Spec
@@ -23,6 +23,9 @@ flowchart TB
   subgraph n_cat_Hosting_CI["Hosting / CI"]
     n_AWS_Amplify["AWS Amplify"]
   end
+  subgraph n_cat_Testing["Testing"]
+    n_Playwright["Playwright"]
+  end
 ```
 
 ## Inventory
@@ -31,6 +34,7 @@ flowchart TB
 |---|---|---|
 | Astro | Frontend framework | dep `astro` |
 | AWS Amplify | Hosting / CI | `amplify.yml` |
+| Playwright | Testing | dep `@playwright/test` |
 
 ## Cross-refs
 

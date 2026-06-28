@@ -3,29 +3,30 @@ type: l2-module
 spec_version: 1
 path: src/layouts
 file_count: 1
-total_lines: 418
+total_lines: 764
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-06-23T05:21:42.221Z
+last_audited: 2026-06-28T17:51:01.140Z
 ---
 
 # src/layouts — Module Spec
 
 **Folder:** `src/layouts`
-**Files:** 1 · **Lines:** 418
+**Files:** 1 · **Lines:** 764
 
 ## File inventory
 
 | File | Lines | Purpose |
 |---|---|---|
-| [`Base.astro`](./Base.md) | 418 |  |
+| [`Base.astro`](./Base.md) | 764 |  |
 
 ## Public surface
 
 Files in this folder imported from elsewhere:
 
-- `Base.astro` — used by 1 file
+- `Base.astro` — used by 2 files
   - `src/pages/index.astro`
+  - `src/pages/resume.astro`
 
 ## Cross-refs
 
