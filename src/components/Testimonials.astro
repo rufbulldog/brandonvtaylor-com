@@ -1,0 +1,24 @@
+---
+import { testimonials } from "../data/resume";
+---
+
+<div class="quotes">
+	{
+		testimonials.map((t) => (
+			<figure class="quote">
+				<div class="quote-mark" aria-hidden="true">“</div>
+				<blockquote class="quote-text">{t.quote}</blockquote>
+				<figcaption class="quote-meta">
+					<div class="quote-name">
+						{t.href ? (
+							<a href={t.href} target="_blank" rel="noopener">{t.name}</a>
+						) : (
+							t.name
+						)}
+					</div>
+					<div class="quote-role">{t.title}</div>
+				</figcaption>
+			</figure>
+		))
+	}
+</div>

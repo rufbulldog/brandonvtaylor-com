@@ -29,11 +29,13 @@ const year = 2026;
 			<div class="container header-inner">
 				<a class="brand" href="#top">Brandon V. Taylor</a>
 				<nav class="nav">
-					<a href="#about">About</a>
-					<a href="#experience">Experience</a>
-					<a href="#projects">Projects</a>
-					<a href="#contact">Contact</a>
-				</nav>
+						<a href="/#about">About</a>
+						<a href="/#experience">Experience</a>
+						<a href="/#education">Education</a>
+						<a href="/#projects">Projects</a>
+						<a href="/#testimonials">Testimonials</a>
+						<a href="/resume">Résumé</a>
+					</nav>
 			</div>
 		</header>
 
@@ -48,7 +50,7 @@ const year = 2026;
 					<a href="https://www.linkedin.com/in/brandontaylor" target="_blank" rel="noopener">LinkedIn</a>
 					<a href="https://github.com/rufbulldog" target="_blank" rel="noopener">GitHub</a>
 				</nav>
-				<p class="muted">Built with Astro · hosted on AWS Amplify</p>
+				<p class="muted">Designed &amp; built by Brandon V. Taylor · Astro, hosted on AWS Amplify · {year}</p>
 			</div>
 			<div class="container">
 				<details class="credits">
@@ -70,38 +72,23 @@ const year = 2026;
 		</footer>
 
 		<style is:global>
-			:root {
-				color-scheme: light dark;
-				--bg: #ffffff;
-				--surface: #ffffff;
-				--surface-2: #fafafa;
-				--fg: #18181b;
-				--muted: #56565e;
-				--border: #e4e4e7;
-				--accent: #4f46e5;
-				--accent-fg: #ffffff;
-				--pill-bg: #eef2ff;
-				--pill-fg: #4338ca;
-				--shadow: 0 1px 2px rgba(24, 24, 27, 0.04),
-					0 8px 24px rgba(24, 24, 27, 0.06);
-				--maxw: 64rem;
+:root {
+				color-scheme: dark;
+				--bg:#08080d; --bg-2:#0d0d16;
+				--surface:#121019; --surface-2:#1b1924;
+				--fg:#f3f3f7; --muted:#a6a6b8;
+				--border:rgba(255,255,255,0.10);
+				--accent:#8b8cf0; --accent-2:#b3a4ff;
+				--accent-fg:#08080d;
+				--pill-bg:rgba(139,140,240,0.16); --pill-fg:#cdceff;
+				--shadow:0 1px 2px rgba(0,0,0,0.4), 0 18px 40px -22px rgba(0,0,0,0.65);
+				--maxw:64rem;
 			}
-			@media (prefers-color-scheme: dark) {
-				:root {
-					--bg: #0a0a0b;
-					--surface: #141417;
-					--surface-2: #101013;
-					--fg: #f4f4f5;
-					--muted: #a1a1aa;
-					--border: #27272a;
-					--accent: #818cf8;
-					--accent-fg: #0a0a0b;
-					--pill-bg: #1e1b4b;
-					--pill-fg: #c7d2fe;
-					--shadow: 0 1px 2px rgba(0, 0, 0, 0.3),
-						0 8px 24px rgba(0, 0, 0, 0.4);
-				}
-			}
+			.accent-blue{--accent:#3b82f6;--accent-2:#60a5fa;}
+			.accent-violet{--accent:#8b5cf6;--accent-2:#a78bfa;}
+			.accent-teal{--accent:#15c2a6;--accent-2:#2dd4bf;}
+			.accent-amber{--accent:#f59e0b;--accent-2:#fbbf24;}
+			.accent-rose{--accent:#fb5a73;--accent-2:#fb7185;}
 
 			* {
 				box-sizing: border-box;
@@ -116,7 +103,11 @@ const year = 2026;
 			}
 			body {
 				margin: 0;
-				background: var(--bg);
+				background:
+					radial-gradient(1100px 540px at 12% -8%, rgba(139,92,246,0.20), transparent 60%),
+					radial-gradient(900px 480px at 100% 4%, rgba(21,194,166,0.14), transparent 58%),
+					var(--bg);
+				background-attachment: fixed;
 				color: var(--fg);
 				font-family:
 					-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -190,8 +181,19 @@ const year = 2026;
 				scroll-margin-top: 72px;
 			}
 			.section {
-				padding-block: 3.5rem;
-				border-top: 1px solid var(--border);
+				position:relative;
+				margin-block:1.75rem;
+				padding-block:2.5rem;
+				background:linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, var(--surface)), var(--surface) 46%);
+				border:1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+				border-radius:18px;
+				box-shadow:var(--shadow), 0 26px 60px -36px color-mix(in srgb, var(--accent) 55%, transparent);
+			}
+			.section::before{
+				content:"";
+				position:absolute; top:0; left:1.5rem; right:1.5rem; height:3px;
+				border-radius:0 0 3px 3px;
+				background:linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 0%, transparent));
 			}
 			.section-title {
 				font-size: 0.85rem;
@@ -218,7 +220,16 @@ const year = 2026;
 
 			/* Hero */
 			.hero {
-				padding-block: 4.5rem 3.5rem;
+				position:relative;
+				margin-top:1.5rem;
+				padding-block:4rem 3.25rem;
+				border-radius:22px;
+				border:1px solid var(--border);
+				overflow:hidden;
+				background:
+					radial-gradient(820px 380px at 0% 0%, rgba(139,92,246,0.30), transparent 60%),
+					radial-gradient(680px 340px at 100% 18%, rgba(21,194,166,0.20), transparent 60%),
+					linear-gradient(180deg, var(--surface), var(--bg-2));
 			}
 			.eyebrow {
 				margin: 0 0 0.75rem;
@@ -228,11 +239,15 @@ const year = 2026;
 				letter-spacing: 0.01em;
 			}
 			.hero-name {
-				margin: 0;
-				font-size: clamp(2.5rem, 7vw, 4rem);
-				line-height: 1.05;
-				letter-spacing: -0.03em;
-				font-weight: 800;
+				margin:0;
+				font-size:clamp(2.5rem, 7vw, 4rem);
+				line-height:1.05;
+				letter-spacing:-0.03em;
+				font-weight:800;
+				background:linear-gradient(118deg, var(--fg) 30%, var(--accent-2));
+				-webkit-background-clip:text;
+				background-clip:text;
+				color:transparent;
 			}
 			.hero-role {
 				margin: 0.75rem 0 0;
@@ -695,6 +710,32 @@ const year = 2026;
 					gap: 0.9rem;
 				}
 			}
+
+			/* Testimonials */
+			.quotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr));gap:1.1rem;}
+			.quote{position:relative;display:flex;flex-direction:column;padding:1.4rem;background:color-mix(in srgb, var(--accent) 8%, var(--surface));border:1px solid color-mix(in srgb, var(--accent) 28%, var(--border));border-radius:14px;}
+			.quote-mark{font-family:Georgia,serif;font-size:2.4rem;line-height:.6;color:var(--accent);opacity:.6;}
+			.quote-text{margin:.4rem 0 1rem;color:var(--fg);font-size:.97rem;}
+			.quote-meta{margin-top:auto;}
+			.quote-name{font-weight:700;font-size:.92rem;}
+			.quote-role{color:var(--muted);font-size:.82rem;}
+			/* Resume page */
+			.resume-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.25rem 0 0;}
+			.rsm{max-width:48rem;}
+			.rsm h2{font-size:1.05rem;margin:1.8rem 0 .6rem;color:var(--accent);}
+			.rsm .role{margin:0 0 1.2rem;}
+			.rsm .role h3{margin:0;font-size:1.02rem;}
+			.rsm .role .meta{color:var(--muted);font-size:.9rem;margin:.1rem 0 .4rem;}
+			.rsm ul{margin:.3rem 0 0;padding-left:1.1rem;display:flex;flex-direction:column;gap:.35rem;}
+			/* Hero photo */
+			.hero-photo{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center 22%;border:2px solid color-mix(in srgb, var(--accent-2) 50%, var(--border));box-shadow:var(--shadow);margin-bottom:1.1rem;display:block;}
+			/* Education */
+			.edu-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem;}
+			.edu-item{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+			.edu-school{margin:0;font-size:1.1rem;font-weight:700;}
+			.edu-degree{margin:.15rem 0 0;color:var(--accent);font-weight:600;font-size:.98rem;}
+			.edu-note{margin:.2rem 0 0;color:var(--muted);font-size:.9rem;}
+			.edu-period{color:var(--muted);font-size:.9rem;white-space:nowrap;font-variant-numeric:tabular-nums;}
 		</style>
 	</body>
 </html>

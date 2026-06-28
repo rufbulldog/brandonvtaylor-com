@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, about, experience, education, projects } from "../data/resume";
+
+const title = `Résumé — ${profile.name}`;
+const description = `Full résumé for ${profile.name}, ${profile.role} in ${profile.location}.`;
+---
+
+<Base title={title} description={description}>
+	<section class="section container accent-violet">
+		<h2 class="section-title">Résumé</h2>
+		<div class="resume-actions">
+			<a class="btn btn-primary" href={profile.resumePdf} download>Download PDF</a>
+			<a class="btn" href="/">← Back to site</a>
+			<a class="btn" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+		</div>
+
+		<div class="rsm">
+			<p class="prose" style="margin-top:1.5rem">{about[0]}</p>
+
+			<h2>Experience</h2>
+			{
+				experience.map((role) => (
+					<div class="role">
+						<h3>{role.title}</h3>
+						<p class="meta">
+							{role.company}
+							{role.location ? ` · ${role.location}` : ""} · {role.period}
+						</p>
+						<ul>
+							{role.highlights.map((h) => (
+								<li>{h}</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+
+			<h2>Education</h2>
+			{
+				education.map((e) => (
+					<div class="role">
+						<h3>{e.school}</h3>
+						<p class="meta">
+							{e.degree}{e.period ? ` · ${e.period}` : ""}
+						</p>
+						{e.note && <p>{e.note}</p>}
+					</div>
+				))
+			}
+
+			<h2>Selected Projects</h2>
+			{
+				projects.map((p) => (
+					<div class="role">
+						<h3>{p.name}</h3>
+						<p class="meta">{p.period}</p>
+						<p>{p.blurb}</p>
+					</div>
+				))
+			}
+		</div>
+	</section>
+</Base>

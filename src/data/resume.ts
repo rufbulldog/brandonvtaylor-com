@@ -69,7 +69,34 @@ export const profile = {
 	location: "Seattle, WA",
 	linkedin: "https://www.linkedin.com/in/brandontaylor",
 	github: "https://github.com/rufbulldog",
+	photo: "/me-avatar.webp",
+	resumePdf: "/Brandon-Taylor-Resume.pdf",
 };
+
+export const education = [
+	{
+		school: "Oregon State University",
+		degree: "B.S. Computer Science — minors in Business Administration & Chemistry",
+		period: "",
+		note: "",
+	},
+];
+
+/** Testimonials — LinkedIn recommendations and peer / direct-report quotes. */
+export const testimonials: {
+	quote: string;
+	name: string;
+	title: string;
+	href?: string;
+}[] = [
+	{
+		quote:
+			"I highly endorse Brandon as a manager. He is extremely passionate about delivering high quality products and understanding user needs. He clearly articulates the product vision to rally the team and drive the product to success. Brandon is a thinker, and is always willing to listen and consider other opinions. As a manager, he takes extra time with his reports to listen and coach them and provide invaluable insight.",
+		name: "Jessica Glago",
+		title: "Product Leader · former direct report at Microsoft",
+		href: "https://www.linkedin.com/in/jessicaglago/",
+	},
+];
 
 export const stats = [
 	{ value: "25 yrs", label: "shipping products" },

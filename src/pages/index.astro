@@ -2,7 +2,8 @@
 import Base from "../layouts/Base.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
-import { profile, about, stats } from "../data/resume";
+import Testimonials from "../components/Testimonials.astro";
+import { profile, about, stats, education } from "../data/resume";
 
 const title = `${profile.name} — ${profile.role}`;
 const description =
@@ -11,23 +12,15 @@ const description =
 
 <Base title={title} description={description}>
 	<section class="hero container">
+		<img class="hero-photo" src={profile.photo} alt={profile.name} width="120" height="120" />
 		<p class="eyebrow">{profile.location}</p>
 		<h1 class="hero-name">{profile.name}</h1>
 		<p class="hero-role">{profile.role}</p>
 		<p class="hero-blurb">{profile.blurb}</p>
 		<div class="hero-cta">
-			<a
-				class="btn btn-primary"
-				href={profile.linkedin}
-				target="_blank"
-				rel="noopener">Connect on LinkedIn</a
-			>
-			<a
-				class="btn"
-				href={profile.github}
-				target="_blank"
-				rel="noopener">GitHub</a
-			>
+			<a class="btn btn-primary" href="/resume">View résumé</a>
+			<a class="btn" href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+			<a class="btn" href={profile.github} target="_blank" rel="noopener">GitHub</a>
 			<a class="btn" href="#projects">See projects</a>
 		</div>
 		<ul class="stats">
@@ -42,19 +35,37 @@ const description =
 		</ul>
 	</section>
 
-	<section id="about" class="section container">
+	<section id="about" class="section container accent-blue">
 		<h2 class="section-title">About</h2>
 		<div class="prose">
 			{about.map((p) => <p>{p}</p>)}
 		</div>
 	</section>
 
-	<section id="experience" class="section container">
+	<section id="experience" class="section container accent-violet">
 		<h2 class="section-title">Experience</h2>
 		<Experience />
 	</section>
 
-	<section id="projects" class="section container">
+	<section id="education" class="section container accent-rose">
+		<h2 class="section-title">Education</h2>
+		<ul class="edu-list">
+			{
+				education.map((e) => (
+					<li class="edu-item">
+						<div>
+							<h3 class="edu-school">{e.school}</h3>
+							<p class="edu-degree">{e.degree}</p>
+							{e.note && <p class="edu-note">{e.note}</p>}
+						</div>
+						<span class="edu-period">{e.period}</span>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section id="projects" class="section container accent-teal">
 		<h2 class="section-title">Projects</h2>
 		<p class="section-lead">
 			Things I build with AI outside the day job — a way to stay close to the
@@ -63,7 +74,12 @@ const description =
 		<Projects />
 	</section>
 
-	<section id="contact" class="section container">
+	<section id="testimonials" class="section container accent-amber">
+		<h2 class="section-title">What others say</h2>
+		<Testimonials />
+	</section>
+
+	<section id="contact" class="section container accent-blue">
 		<h2 class="section-title">Contact</h2>
 		<p class="prose">
 			The best way to reach me is on <a
