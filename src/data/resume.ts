@@ -1,6 +1,8 @@
 // All site content lives here so updates are data changes, not markup edits.
 
 export interface Role {
+	/** anchor id for in-page links */
+	id?: string;
 	company: string;
 	title: string;
 	location?: string;
@@ -43,12 +45,12 @@ export interface Project {
  * product/company logos (same filenames) to replace them.
  */
 export const journey = [
-	{ label: "Microsoft Office", logo: "/logos/microsoft.svg" },
-	{ label: "Bing", logo: "/logos/bing.svg" },
-	{ label: "Skype", logo: "/logos/skype.svg" },
-	{ label: "HoloLens", logo: "/logos/hololens.svg" },
-	{ label: "Alexa", logo: "/logos/alexa.svg" },
-	{ label: "Amazon", logo: "/logos/amazon.svg" },
+	{ label: "Microsoft Office", logo: "/logos/microsoft.svg", target: "#role-microsoft" },
+	{ label: "Bing", logo: "/logos/bing.svg", target: "#role-bing" },
+	{ label: "Skype", logo: "/logos/skype.svg", target: "#role-skype" },
+	{ label: "HoloLens", logo: "/logos/hololens.svg", target: "#role-skype" },
+	{ label: "Alexa", logo: "/logos/alexa.svg", target: "#role-amazon-alexa" },
+	{ label: "Amazon", logo: "/logos/amazon.svg", target: "#role-amazon-principal" },
 ];
 
 /** Logo attributions. All public domain, sourced via Wikimedia Commons. */
@@ -114,6 +116,7 @@ export const about = [
 export const experience: Role[] = [
 	{
 		company: "Amazon",
+		id: "amazon-principal",
 		logo: "/logos/amazon.svg",
 		title: "Principal Manager — Product, Engineering & Science",
 		location: "Seattle & Vancouver, BC",
@@ -132,6 +135,7 @@ export const experience: Role[] = [
 	},
 	{
 		company: "Amazon",
+		id: "amazon-stpm",
 		logo: "/logos/amazon.svg",
 		title: "Senior Technical Program Manager",
 		period: "2017 — 2019",
@@ -142,6 +146,7 @@ export const experience: Role[] = [
 	},
 	{
 		company: "Amazon — Alexa Communications",
+		id: "amazon-alexa",
 		logo: "/logos/alexa.svg",
 		title: "Senior Product Manager, Technical",
 		period: "2016 — 2017",
@@ -157,6 +162,7 @@ export const experience: Role[] = [
 	},
 	{
 		company: "Skype · Microsoft",
+		id: "skype",
 		logo: "/logos/skype.svg",
 		title: "Senior Product Manager Lead",
 		location: "London, UK",
@@ -175,6 +181,7 @@ export const experience: Role[] = [
 	},
 	{
 		company: "Bing Mobile · Microsoft",
+		id: "bing",
 		logo: "/logos/bing.svg",
 		title: "Senior Product Manager Lead",
 		period: "2010 — 2013",
@@ -193,6 +200,7 @@ export const experience: Role[] = [
 	},
 	{
 		company: "Microsoft — Office, SharePoint & Communicator",
+		id: "microsoft",
 		logo: "/logos/microsoft.svg",
 		title: "Product Owner",
 		location: "Zurich & Redmond",

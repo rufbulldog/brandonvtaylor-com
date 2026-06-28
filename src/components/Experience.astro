@@ -2,19 +2,21 @@
 import { experience, journey } from "../data/resume";
 ---
 
-<ul class="journey" aria-label="Products and surfaces I've shipped">
+<ul class="journey" aria-label="Jump to a role by product or company">
 	{
 		journey.map((j) => (
 			<li class="journey-item">
-				<img
-					class="journey-logo"
-					src={j.logo}
-					alt={`${j.label} logo`}
-					loading="lazy"
-					width="56"
-					height="56"
-				/>
-				<span class="journey-label">{j.label}</span>
+				<a href={j.target} class="journey-link" title={`Jump to ${j.label}`}>
+					<img
+						class="journey-logo"
+						src={j.logo}
+						alt={`${j.label} logo`}
+						loading="lazy"
+						width="56"
+						height="56"
+					/>
+					<span class="journey-label">{j.label}</span>
+				</a>
 			</li>
 		))
 	}
@@ -23,7 +25,7 @@ import { experience, journey } from "../data/resume";
 <ul class="exp-list">
 	{
 		experience.map((role) => (
-			<li class="exp-item">
+			<li class="exp-item" id={role.id ? `role-${role.id}` : undefined}>
 				<div class="exp-head">
 					<div class="exp-headings">
 						{role.logo && (
