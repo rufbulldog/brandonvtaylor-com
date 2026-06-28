@@ -104,11 +104,11 @@ export const stats = [
 	{ value: "25 yrs", label: "shipping products" },
 	{ value: "$1.5B+", label: "annual revenue impact" },
 	{ value: "18", label: "issued patents" },
-	{ value: "30", label: "person org led" },
+	{ value: "30+", label: "person org led" },
 ];
 
 export const about = [
-	"I'm an engineering and product leader based in Seattle. At Amazon I lead a 30-person organization spanning engineering, applied science, and product — owning customer-facing performance, observability across a 50,000+ service graph, and AI-driven code migration.",
+	"I'm an engineering and product leader based in Seattle. At Amazon I lead a 30+ person organization spanning engineering, applied science, and product — owning customer-facing performance, observability across a 50,000+ service graph, and AI-driven code migration.",
 	"Before Amazon I spent over a decade at Microsoft shipping consumer products people use every day — Skype, Skype on HoloLens, and Bing Mobile — including stints in London and Zurich.",
 	"I care about empathetic leadership, growing engineers, and sponsoring women in engineering. These days I build and ship apps with AI as a way to stay close to the craft.",
 ];
@@ -122,15 +122,15 @@ export const experience: Role[] = [
 		location: "Seattle & Vancouver, BC",
 		period: "2019 — Present",
 		highlights: [
-			"Lead a 30-person, multi-discipline org — engineering managers and their teams, product, and an applied-science lead — across three central Amazon.com platform charters.",
+			"Lead a 30+ person, multi-discipline org — engineering managers and their teams, product, and an applied-science lead — across three central Amazon.com platform charters.",
 			"Central Performance & Latency: cut amazon.com shopping latency ~40% (the fastest in years); the latency and quality work is estimated to drive $1.5B+ in annual revenue.",
 			"Central Observability: stood up distributed tracing and analytics across a 50,000+ service graph.",
-			"AI-Powered Code Migration: founded a team building custom AI that turns multi-year migration programs into automated, repeatable workflows.",
+			"AI-Powered Code Migration: manage a team building custom AI that turns multi-year migration programs into automated, repeatable workflows.",
 		],
 		details: [
 			"My org sits at the center of the amazon.com storefront — three platform charters that thousands of Amazon engineers build on every day. I run it as one multi-discipline team: engineering managers and their teams, a product function, and an applied-science lead, spanning Seattle and Vancouver, BC.",
 			"On performance, we treated latency as a product: instrumenting the critical path, going after the slowest real customer experiences, and proving the revenue impact of every millisecond. That produced the fastest amazon.com shopping latency in years and a program estimated to drive $1.5B+ in annual revenue.",
-			"On observability, we built distributed tracing and analytics across a 50,000+ service graph so teams could see, in one place, how a customer request actually flows through the system. And I founded a team applying custom AI to turn slow, manual migration programs into automated, repeatable workflows.",
+			"On observability, we built distributed tracing and analytics across a 50,000+ service graph so teams could see, in one place, how a customer request actually flows through the system. And I manage a team applying custom AI to turn slow, manual migration programs into automated, repeatable workflows.",
 		],
 	},
 	{
