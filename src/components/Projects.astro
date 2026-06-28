@@ -7,13 +7,26 @@ import { projects } from "../data/resume";
 		projects.map((p) => (
 			<article class="proj-card">
 				{p.screens && p.screens.length > 0 ? (
-					<div class="proj-screens">
-						{p.screens.map((s) => (
-							<figure class="proj-screen">
-								<img src={s.src} alt={s.caption ?? `${p.name} screenshot`} loading="lazy" />
-								{s.caption && <figcaption>{s.caption}</figcaption>}
-							</figure>
-						))}
+					<div class="proj-carousel">
+						<div class="proj-track">
+							{p.screens.map((s) => (
+								<figure class="proj-slide">
+									<img src={s.src} alt={s.caption ?? `${p.name} screenshot`} loading="lazy" />
+									{s.caption && <figcaption>{s.caption}</figcaption>}
+								</figure>
+							))}
+						</div>
+						{p.screens.length > 1 && (
+							<Fragment>
+								<button class="proj-arrow proj-prev" type="button" aria-label="Previous screenshot">‹</button>
+								<button class="proj-arrow proj-next" type="button" aria-label="Next screenshot">›</button>
+								<div class="proj-dots">
+									{p.screens.map((_, i) => (
+										<button class="proj-dot" type="button" aria-label={`Go to screenshot ${i + 1}`} />
+									))}
+								</div>
+							</Fragment>
+						)}
 					</div>
 				) : p.shot ? (
 					<a
@@ -55,3 +68,21 @@ import { projects } from "../data/resume";
 		))
 	}
 </div>
+
+<script>
+	document.querySelectorAll<HTMLElement>(".proj-carousel").forEach((c) => {
+		const track = c.querySelector<HTMLElement>(".proj-track");
+		const slides = c.querySelectorAll(".proj-slide");
+		const dots = Array.from(c.querySelectorAll<HTMLElement>(".proj-dot"));
+		if (!track || slides.length < 2) return;
+		const cur = () => Math.round(track.scrollLeft / track.clientWidth);
+		const go = (i: number) =>
+			track.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * track.clientWidth, behavior: "smooth" });
+		c.querySelector(".proj-prev")?.addEventListener("click", () => go(cur() - 1));
+		c.querySelector(".proj-next")?.addEventListener("click", () => go(cur() + 1));
+		dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+		const update = () => dots.forEach((d, k) => d.classList.toggle("active", k === cur()));
+		track.addEventListener("scroll", () => requestAnimationFrame(update));
+		update();
+	});
+</script>
