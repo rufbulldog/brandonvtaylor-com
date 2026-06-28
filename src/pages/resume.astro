@@ -2,13 +2,13 @@
 import Base from "../layouts/Base.astro";
 import { profile, about, experience, education, projects } from "../data/resume";
 
-const title = `Résumé — ${profile.name}`;
+const title = `Resume — ${profile.name}`;
 const description = `Full résumé for ${profile.name}, ${profile.role} in ${profile.location}.`;
 ---
 
 <Base title={title} description={description}>
 	<section class="section container accent-violet">
-		<h2 class="section-title">Résumé</h2>
+		<h2 class="section-title">Resume</h2>
 		<div class="resume-actions">
 			<a class="btn btn-primary" href={profile.resumePdf} download>Download PDF</a>
 			<a class="btn" href="/">← Back to site</a>

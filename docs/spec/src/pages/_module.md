@@ -6,7 +6,7 @@ file_count: 2
 total_lines: 164
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-06-28T17:51:01.140Z
+last_audited: 2026-06-28T18:49:41.481Z
 ---
 
 # src/pages — Module Spec

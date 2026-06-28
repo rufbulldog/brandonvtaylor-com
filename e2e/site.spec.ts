@@ -30,8 +30,8 @@ test.describe("Homepage nav links", () => {
     await expect(link).toHaveAttribute("href", "/#education");
   });
 
-  test("Résumé nav link goes to /resume", async ({ page }) => {
-    const link = page.locator("nav a", { hasText: /résumé/i });
+  test("Resume nav link goes to /resume", async ({ page }) => {
+    const link = page.locator("nav a", { hasText: /resume/i });
     await expect(link).toHaveAttribute("href", "/resume");
   });
 });
@@ -41,8 +41,8 @@ test.describe("Homepage hero buttons", () => {
     await page.goto("/");
   });
 
-  test("View résumé button links to /resume", async ({ page }) => {
-    const btn = page.locator(".hero-cta a", { hasText: /view résumé/i });
+  test("View resume button links to /resume", async ({ page }) => {
+    const btn = page.locator(".hero-cta a", { hasText: /view resume/i });
     await expect(btn).toHaveAttribute("href", "/resume");
   });
 

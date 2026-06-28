@@ -2,10 +2,10 @@
 type: l1-file
 spec_version: 1
 source: src/pages/resume.astro
-content_sha: fe1614fd1c763fa9be0603a0be9ef7439546a8c468256898b7f57952fb96f25f
+content_sha: 8c95a81c9818bd90f09c8ada5fd8ddacda481a083f5062416de4313cc906df39
 extractor_version: 1.1.0
 renderer_version: 1.0.0
-last_audited: 2026-06-28T17:51:01.134Z
+last_audited: 2026-06-28T18:49:41.476Z
 ---
 
 # resume.astro

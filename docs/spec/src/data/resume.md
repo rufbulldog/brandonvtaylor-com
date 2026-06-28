@@ -2,10 +2,10 @@
 type: l1-file
 spec_version: 1
 source: src/data/resume.ts
-content_sha: fccbf2ffc149e85a08ffff66e6fa0ddaaf282ded92c5212c5caa973f7a00614c
+content_sha: d7455e0722e797eb4d10e047eae00d63ce6af552fbe20212644be1478f736aa4
 extractor_version: 1.1.0
 renderer_version: 1.0.0
-last_audited: 2026-06-28T17:51:01.109Z
+last_audited: 2026-06-28T18:49:41.452Z
 ---
 
 # resume.ts

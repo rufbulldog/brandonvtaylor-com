@@ -172,11 +172,11 @@ export const experience: Role[] = [
 			"Skype on HoloLens — an AR call connecting to the International Space Station.",
 		highlights: [
 			"Led the PM team owning strategy and roadmap for next-generation Skype messaging; built a web-based messaging experience hosted inside the native iOS and Android apps.",
-			"PM for Skype on HoloLens — AR video calls with drawing and photo insertion; flown to the International Space Station and used in orbit by astronaut Scott Kelly.",
+			"Designed and launched Skype on HoloLens tablet companion app - AR video calls with drawing and photo insertion; flown to the International Space Station and used in orbit by astronaut Scott Kelly.",
 		],
 		details: [
 			"I led the PM team setting strategy and roadmap for the next generation of Skype messaging, used by hundreds of millions of people. We built a web-based messaging experience that ran inside the native iOS and Android apps — a write-once approach that let us ship faster across surfaces.",
-			"I was also PM for Skype on HoloLens: AR video calls where you would Skype call someone from a tablet to a remote person's space (wearing HoloLens) and point, draw, and drop in photos. HoloLens flew to the International Space Station and was used in orbit by astronaut Scott Kelly, with NASA Mission Control doing a Skype call and drawing so he could see inside the space station.",
+			"Designed and launched Skype on HoloLens tablet companion app - AR video calls where you would Skype call someone from a tablet to a remote person's space (wearing HoloLens) and point, draw, and drop in photos. HoloLens flew to the International Space Station and was used in orbit by astronaut Scott Kelly, with NASA Mission Control doing a Skype call and drawing so he could see inside the space station.",
 		],
 	},
 	{

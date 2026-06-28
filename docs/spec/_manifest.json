@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-06-28T18:19:20.530Z",
+  "generated_at": "2026-06-28T18:49:41.485Z",
   "files": {
     "src/components/Experience.astro": {
       "content_sha256": "b1df205500dac9cc81fa2cde23df5a400ba859d45a25c0d441ca072da895a97a",
@@ -31,32 +31,32 @@
       "last_audited": "2026-06-28T17:51:01.104Z"
     },
     "src/data/resume.ts": {
-      "content_sha256": "fccbf2ffc149e85a08ffff66e6fa0ddaaf282ded92c5212c5caa973f7a00614c",
+      "content_sha256": "d7455e0722e797eb4d10e047eae00d63ce6af552fbe20212644be1478f736aa4",
       "spec_path": "docs/spec/src/data/resume.md",
       "extractor_version": "1.1.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T17:51:01.109Z"
+      "last_audited": "2026-06-28T18:49:41.452Z"
     },
     "src/layouts/Base.astro": {
-      "content_sha256": "37ec9f0ff9b93262e9cf0efdda897babe4ae98311a839cdd8f4d1fb0ea2cb3fe",
+      "content_sha256": "00e86491dddf62e5f3f91315a00b5ec63cbc8cc7d0fe970c926522fbf4de3c98",
       "spec_path": "docs/spec/src/layouts/Base.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T17:51:01.115Z"
+      "last_audited": "2026-06-28T18:49:41.458Z"
     },
     "src/pages/index.astro": {
-      "content_sha256": "57d04f4f469f4c84251266bd7b9c86e8fcbfb10de2ea36eb4f042b4dd21d70af",
+      "content_sha256": "5f2bddce58bc262deaf7d17ebac9470717dd87d0b293065537e3c912c5d81761",
       "spec_path": "docs/spec/src/pages/index.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T17:51:01.125Z"
+      "last_audited": "2026-06-28T18:49:41.466Z"
     },
     "src/pages/resume.astro": {
-      "content_sha256": "fe1614fd1c763fa9be0603a0be9ef7439546a8c468256898b7f57952fb96f25f",
+      "content_sha256": "8c95a81c9818bd90f09c8ada5fd8ddacda481a083f5062416de4313cc906df39",
       "spec_path": "docs/spec/src/pages/resume.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T17:51:01.134Z"
+      "last_audited": "2026-06-28T18:49:41.476Z"
     }
   },
   "modules": {
@@ -68,25 +68,25 @@
       "last_audited": "2026-06-28T17:51:01.139Z"
     },
     "src/data": {
-      "input_hashes_sha256": "f6b8fe23ddce032f15fab237420f240ea723b4a20d1e9416cab125bf8c1c7f21",
+      "input_hashes_sha256": "32208f7d62ef97be810ee5a269d89996f75a9737e6ec27667c875d81746f3733",
       "spec_path": "docs/spec/src/data/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T17:51:01.139Z"
+      "last_audited": "2026-06-28T18:49:41.480Z"
     },
     "src/layouts": {
-      "input_hashes_sha256": "a33fcd0a178c3624007afa933c4aaf88ba1e55dec90ff8e421a0a09b081a4ca2",
+      "input_hashes_sha256": "59cb799abe9d46d3f3a40f985fcad6fd38a63342b23389ad4156176641cca298",
       "spec_path": "docs/spec/src/layouts/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T17:51:01.140Z"
+      "last_audited": "2026-06-28T18:49:41.481Z"
     },
     "src/pages": {
-      "input_hashes_sha256": "a887fbe363ca3476d2ea299fb8edc2862b1e87ef7562a0bec2f9f72417de4242",
+      "input_hashes_sha256": "ad052e9c16031610a04cb42d9a46e15814e166796998ee292bae6e846b741fa2",
       "spec_path": "docs/spec/src/pages/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T17:51:01.140Z"
+      "last_audited": "2026-06-28T18:49:41.481Z"
     }
   },
   "systems": {
