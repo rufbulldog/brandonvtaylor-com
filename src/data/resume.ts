@@ -109,7 +109,7 @@ export const stats = [
 
 export const about = [
 	"I'm an engineering and product leader based in Seattle. At Amazon I lead a 30+ person organization spanning engineering, applied science, and product — owning customer-facing performance, observability across a 50,000+ service graph, and AI-driven code migration.",
-	"Before Amazon I spent over a decade at Microsoft shipping consumer products people use every day — Skype, Skype on HoloLens, and Bing Mobile — including stints in London and Zurich.",
+	"Before Amazon I spent over a decade at Microsoft shipping consumer products people use every day — Skype, Skype on HoloLens, and Bing Mobile — including stints in London and Zürich.",
 	"I care about empathetic leadership, growing engineers, and sponsoring women in engineering. These days I build and ship apps with AI as a way to stay close to the craft.",
 ];
 
@@ -155,7 +155,7 @@ export const experience: Role[] = [
 			"Shipped in-home family communications — “Alexa, make an announcement” and voice-message-to-SMS.",
 		],
 		details: [
-			"I was the PM for bringing voice and video calling and messaging to Alexa — the first communications experience on the platform — and for the launch of the Echo Show, Alexa's first device with a screen.",
+			"I was a PM working on bringing voice and video calling and messaging to Alexa — the first communications experience on the platform — and for the launch of the Echo Show, Alexa's first device with a screen.",
 		],
 		image: "/shots/echo-show.svg",
 		imageCaption: "Amazon Echo Show (1st gen) — the launch device for calling and messaging on Alexa.",
@@ -172,11 +172,11 @@ export const experience: Role[] = [
 			"Skype on HoloLens — an AR call connecting to the International Space Station.",
 		highlights: [
 			"Led the PM team owning strategy and roadmap for next-generation Skype messaging; built a web-based messaging experience hosted inside the native iOS and Android apps.",
-			"Product owner for Skype on HoloLens — AR video calls with drawing and photo insertion; flown to the International Space Station and used in orbit by astronaut Scott Kelly.",
+			"PM for Skype on HoloLens — AR video calls with drawing and photo insertion; flown to the International Space Station and used in orbit by astronaut Scott Kelly.",
 		],
 		details: [
 			"I led the PM team setting strategy and roadmap for the next generation of Skype messaging, used by hundreds of millions of people. We built a web-based messaging experience that ran inside the native iOS and Android apps — a write-once approach that let us ship faster across surfaces.",
-			"I was also product owner for Skype on HoloLens: AR video calls where you could draw in a remote person's space and drop in photos. It flew to the International Space Station and was used in orbit by astronaut Scott Kelly.",
+			"I was also PM for Skype on HoloLens: AR video calls where you would Skype call someone from a tablet to a remote person's space (wearing HoloLens) and point, draw, and drop in photos. HoloLens flew to the International Space Station and was used in orbit by astronaut Scott Kelly, with NASA Mission Control doing a Skype call and drawing so he could see inside the space station.",
 		],
 	},
 	{
@@ -191,7 +191,7 @@ export const experience: Role[] = [
 		],
 		details: [
 			"I doubled mobile monthly active users while migrating mobile onto a shared backend with Bing desktop and compressing release cadence from quarterly to daily — a full CI/CD modernization.",
-			"On the side I designed and launched bSeattle, a Windows Phone restaurant-discovery app with ML-generated dish summaries that held a 4.5-star lifetime rating.",
+			"I was PM for the UI for a new Windows Phone app, bSeattle — a restaurant-discovery app with a hyperlocal focus: human-authored news feeds, ML-generated dish summaries, and panoramas of interiors. It held a 4.5-star lifetime rating.",
 		],
 		gallery: [
 			{ src: "/shots/bseattle-buzz.svg", caption: "bSeattle — neighborhood buzz" },
@@ -203,10 +203,10 @@ export const experience: Role[] = [
 		id: "microsoft",
 		logo: "/logos/microsoft.svg",
 		title: "Product Owner",
-		location: "Zurich & Redmond",
+		location: "Zürich & Redmond",
 		period: "2001 — 2010",
 		highlights: [
-			"Launched Communicator 2007 Attendant and shipped group video calling and delegation in Office Communicator 2007 (Zurich).",
+			"Launched Communicator 2007 Attendant and shipped group video calling and delegation in Office Communicator 2007 (Zürich).",
 			"Product owner for enterprise document management in Office 2007 and the server-side antivirus API for SharePoint.",
 		],
 	},
@@ -246,6 +246,9 @@ export const projects: Project[] = [
 			"A custom cross-platform app built as a personal birthday gift — an animated card with ASCII art, confetti cannons, balloons, and interactive fireworks, bundled with a few homemade mini-games (basketball, Snake, and a Wordle clone).",
 		tags: ["React Native", "Expo", "TypeScript"],
 		shot: "/shots/birthday.svg",
+		screens: [
+			{ src: "/shots/birthday-1.webp", caption: "The animated birthday card" },
+		],
 	},
 	{
 		name: "Turntable Speed",
