@@ -4,7 +4,7 @@ import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import Testimonials from "../components/Testimonials.astro";
 import Icon from "../components/Icon.astro";
-import { profile, about, stats, education } from "../data/resume";
+import { profile, about, stats, education, leadership } from "../data/resume";
 
 const title = `${profile.name} — ${profile.role}`;
 const description =
@@ -50,6 +50,20 @@ const description =
 	<section id="experience" class="section container accent-violet">
 		<h2 class="section-title">Experience</h2>
 		<Experience />
+	</section>
+
+	<section id="leadership" class="section container accent-green">
+		<h2 class="section-title">How I Lead</h2>
+		<ul class="leadership-list">
+			{
+				leadership.map((l) => (
+					<li class="leadership-item">
+						<h3>{l.title}</h3>
+						<p>{l.body}</p>
+					</li>
+				))
+			}
+		</ul>
 	</section>
 
 	<section id="projects" class="section container accent-teal">

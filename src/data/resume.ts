@@ -67,7 +67,7 @@ export const profile = {
 	name: "Brandon V. Taylor",
 	role: "Engineering & product leader",
 	blurb:
-		"I build consumer products by bringing engineering, science, and product together.",
+		"I turn complex platform problems into products that teams love to use — by bringing engineering, science, and product into one team.",
 	location: "Seattle, WA",
 	linkedin: "https://www.linkedin.com/in/brandontaylor",
 	github: "https://github.com/rufbulldog",
@@ -98,6 +98,36 @@ export const testimonials: {
 		title: "Product Leader · former direct report at Microsoft",
 		href: "https://www.linkedin.com/in/jessicaglago/",
 	},
+	{
+		quote:
+			"Brandon sets a high bar but creates a safe space for his teams to innovate and be creative in meeting that bar. He's successfully scaled his leadership across increased scope and additional teams by empowering his direct reports. Fun to be a member of his team and motivating to see the continued growth in his leadership.",
+		name: "Direct report",
+		title: "Amazon",
+	},
+	{
+		quote:
+			"Brandon creates a psychologically safe environment that encourages experimentation with ambitious ideas. He supported me in three experimental initiatives last year, fostering an atmosphere where I feel comfortable pursuing innovative approaches without fear of failure.",
+		name: "Peer",
+		title: "Amazon",
+	},
+	{
+		quote:
+			"Brandon exemplifies thoughtful leadership by providing timely, specific feedback that enables growth. When my promotion case needed work, he clearly articulated the gaps and provided concrete ideas to bridge them. He never left me uncertain about next steps, which built my confidence and accelerated my development.",
+		name: "Direct report",
+		title: "Amazon",
+	},
+	{
+		quote:
+			"Brandon excels at handling tricky cross-team situations with clarity and fairness. He provides direct feedback on shortcomings while also giving clarity when misalignment exists with other teams. I can rely on him to help distinguish between gaps and strengths, especially when prioritization is unclear.",
+		name: "Peer",
+		title: "Amazon",
+	},
+	{
+		quote:
+			"Brandon's ability to Think Big led to a major project I'm currently working on. What started as a simple question — 'Why not make use of our historical data?' — evolved into a significant initiative. His vision to look beyond the obvious and identify opportunities in existing assets demonstrates how thinking big can unlock meaningful innovation.",
+		name: "Direct report",
+		title: "Amazon",
+	},
 ];
 
 export const stats = [
@@ -108,9 +138,29 @@ export const stats = [
 ];
 
 export const about = [
-	"I'm an engineering and product leader based in Seattle. At Amazon I lead a 30+ person organization spanning engineering, applied science, and product — owning customer-facing performance, observability across a 50,000+ service graph, and AI-driven code migration.",
-	"Before Amazon I spent over a decade at Microsoft shipping consumer products people use every day — Skype, Skype on HoloLens, and Bing Mobile — including stints in London and Zürich.",
-	"I care about empathetic leadership, growing engineers, and sponsoring women in engineering. These days I build and ship apps with AI as a way to stay close to the craft.",
+	"I'm an engineering and product leader in Seattle. I run a 30+ person org at Amazon spanning engineering, applied science, and product — three platform charters that thousands of engineers build on daily. My teams own customer-facing performance (latency as a product), distributed tracing across a 90,000+ service graph, and AI-powered code migration that turns multi-year programs into automated workflows.",
+	"Before Amazon: a decade at Microsoft shipping Skype, HoloLens, Bing Mobile, and Office — including stints in London and Zürich.",
+	"What defines my leadership: I set a high bar while creating psychological safety for teams to experiment with ambitious ideas. I believe the best products come from empowered people who feel safe to take risks. I mentor across the org with a focus on underrepresented voices in engineering leadership. Outside work, I build and ship real apps with AI to stay close to the craft.",
+];
+
+/** "How I Lead" section — recurring themes from peer/direct-report feedback. */
+export const leadership = [
+	{
+		title: "High bar, safe space.",
+		body: "I believe the best work happens when people feel safe to take risks and are held to a high standard. These aren't in tension — they reinforce each other.",
+	},
+	{
+		title: "Mechanisms over heroics.",
+		body: "Monthly demos, learning days, structured mentorship. I build systems that make good outcomes repeatable rather than depending on individual brilliance.",
+	},
+	{
+		title: "Pattern recognition across domains.",
+		body: "I look for what worked in one area and apply it to challenges in another. The best solutions are often already proven somewhere — they just need someone to see the connection.",
+	},
+	{
+		title: "Know when to say no.",
+		body: "The hardest leadership skill is declining opportunities that don't align with strategy. I'd rather a team do three things exceptionally than seven things adequately.",
+	},
 ];
 
 export const experience: Role[] = [
@@ -124,13 +174,17 @@ export const experience: Role[] = [
 		highlights: [
 			"Lead a 30+ person, multi-discipline org — engineering managers and their teams, product, and an applied-science lead — across three central Amazon.com platform charters.",
 			"Central Performance & Latency: cut amazon.com shopping latency ~40% (the fastest in years); the latency and quality work is estimated to drive $1.5B+ in annual revenue.",
-			"Central Observability: stood up distributed tracing and analytics across a 50,000+ service graph.",
+			"Central Observability: stood up distributed tracing and analytics across a 90,000+ service graph.",
 			"AI-Powered Code Migration: manage a team building custom AI that turns multi-year migration programs into automated, repeatable workflows.",
 		],
 		details: [
 			"My org sits at the center of the amazon.com storefront — three platform charters that thousands of Amazon engineers build on every day. I run it as one multi-discipline team: engineering managers and their teams, a product function, and an applied-science lead, spanning Seattle and Vancouver, BC.",
 			"On performance, we treated latency as a product: instrumenting the critical path, going after the slowest real customer experiences, and proving the revenue impact of every millisecond. That produced the fastest amazon.com shopping latency in years and a program estimated to drive $1.5B+ in annual revenue.",
-			"On observability, we built distributed tracing and analytics across a 50,000+ service graph so teams could see, in one place, how a customer request actually flows through the system. And I manage a team applying custom AI to turn slow, manual migration programs into automated, repeatable workflows.",
+			"On observability, we built distributed tracing and analytics across a 90,000+ service graph so teams could see, in one place, how a customer request actually flows through the system. And I manage a team applying custom AI to turn slow, manual migration programs into automated, repeatable workflows.",
+			"I inherited this org with low morale and unclear direction: assessed the product portfolio, wrote a vision document that resonated with senior leadership, and rebuilt the culture from the ground up — zero attrition through the transition. Within six months, operational health scores went from 25% to 90% on one product line and 12% to 50% on another.",
+			"On the people side: three promotions in one year, exceeded hiring targets, and restructured when performance gaps emerged — always pairing high standards with individualized growth plans.",
+			"On strategy: when asked to evaluate a new business opportunity in package delivery latency, I delegated the analysis to my economist and TPM, collaborated with senior principal engineers across three orgs, and delivered a recommendation within one month — the most efficient senior-leadership document review in my nine years at the company. We recommended a strategic support role rather than full ownership, transitioned it cleanly, and kept the team focused on our core charter.",
+			"When a partner team wanted to rush new workflows straight to production, I pushed back and helped them navigate it more deliberately instead, then gave extensive feedback ahead of their executive demo. They succeeded — a reminder that backbone and generosity aren't mutually exclusive.",
 		],
 	},
 	{
@@ -141,7 +195,7 @@ export const experience: Role[] = [
 		period: "2017 — 2019",
 		highlights: [
 			"Owned a large-scale data-processing framework on AWS that kept worldwide HR systems running on up-to-date employee data.",
-			"Shipped two Alexa for Work skills deployed across conference rooms and kitchens.",
+			"Built the framework behind two Alexa for Work skills, extending voice interactions company-wide into conference rooms and kitchens.",
 		],
 	},
 	{
