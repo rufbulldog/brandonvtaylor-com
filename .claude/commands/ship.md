@@ -27,7 +27,7 @@ Reconcile the auto-generated spec so it commits with the change:
 ```bash
 spec extract
 ```
-Stage the changed `docs/spec/**/*.md`. (Shared `spec` CLI; `cd <path>/dev-utils/packages/spec && npm link` if not on PATH. No CI spec gate here, so this is the only thing keeping the spec current.)
+Stage the changed `docs/spec/**/*.md`. (The `spec` binary is the `@rufbulldog/spec` package from the `dev-utils` monorepo, on PATH via a global `npm link` → `dev-utils/packages/spec/dist/cli.js`. Not on PATH? `cd ../dev-utils/packages/spec && npm run build && npm link`. No CI spec gate here, so this is the only thing keeping the spec current.)
 
 # Step 2: Local preview (optional, user-gated)
 If the change is visual, offer a local look and wait for confirmation:
