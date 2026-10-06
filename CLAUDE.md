@@ -4,7 +4,7 @@ Guidance for Claude Code when working in brandonvtaylor-com.
 
 ## Project Overview
 
-Personal site for Brandon V. Taylor — a static **Astro** site hosted on **AWS Amplify** (app `d2ogtzfa2v7un`, us-west-2), served at brandonvtaylor.com. Single `main` branch; **deploy = push to `main`** (Amplify builds + deploys automatically). No app, no test suite.
+Personal site for Brandon V. Taylor — a static **Astro** site hosted on **AWS Amplify** (app `d2ogtzfa2v7un`, us-west-2), served at brandonvtaylor.com. Single `main` branch; **deploy = push to `main`** (Amplify builds + deploys automatically). No app; Playwright tests (`npm test`) run against the built site.
 
 ## Development Commands
 
@@ -25,7 +25,7 @@ npm run preview   # astro preview (serve the built site)
 
 ## Deploy
 
-There is no separate deploy step — **pushing to `main` is the deploy**: Amplify rebuilds and serves the new `dist/`. Use the **`/ship`** playbook (`.claude/commands/ship.md`): build check (`npm run build` must pass, or Amplify fails the same way) → spec reconcile → commit → push.
+There is no separate deploy step — **pushing to `main` is the deploy**: Amplify rebuilds and serves the new `dist/`. Use the global `/ship` skill (shared [`rufbulldog/dev-utils`](https://github.com/rufbulldog/dev-utils) `claude-global/skills/ship`), driven by this repo's profile [`.claude/ship.md`](.claude/ship.md): build check (`npm run build` must pass, or Amplify fails the same way) → spec reconcile → commit → push.
 
 ## Shared tooling (from rufbulldog/dev-utils)
 
