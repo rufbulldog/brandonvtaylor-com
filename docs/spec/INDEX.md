@@ -1,7 +1,7 @@
 ---
 type: index
 spec_version: 1
-generated_at: 2026-07-03T06:35:47.991Z
+generated_at: 2026-11-17T07:08:04.291Z
 ---
 
 # Spec catalog
