@@ -365,7 +365,7 @@ export const projects: Project[] = [
     name: "Birthday App",
     period: "2025",
     blurb:
-      "A custom cross-platform app built as a personal birthday gift — an animated card with ASCII art, confetti cannons, balloons, and interactive fireworks, bundled with a few homemade mini-games (basketball, Snake, and a Wordle clone).",
+      "A custom cross-platform app that began as a personal birthday gift and grew into a bundle of homemade mini-games and learning tools: a Wordle clone, classic Snake, a Flappy-Bird-style arcade game, and a Spanish flash-card trainer that builds decks from scanned words and drills them with flip-card study.",
     tags: ["React Native", "Expo", "TypeScript"],
     shot: "/shots/birthday.svg",
     screens: [

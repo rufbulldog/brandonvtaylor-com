@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated_at": "2026-11-17T07:08:04.291Z",
+  "generated_at": "2026-11-19T01:19:30.153Z",
   "files": {
     "src/components/Experience.astro": {
       "content_sha256": "b1df205500dac9cc81fa2cde23df5a400ba859d45a25c0d441ca072da895a97a",
@@ -31,11 +31,11 @@
       "last_audited": "2026-06-28T17:51:01.104Z"
     },
     "src/data/resume.ts": {
-      "content_sha256": "89a34e0447e9886cd3e6c5b2473f39333f866df83ee9f10a4f04c2fc676beef4",
+      "content_sha256": "7875a6ed971ac5ecf10f0173803285d05b140d85dca504f9d53db23076f68934",
       "spec_path": "docs/spec/src/data/resume.md",
       "extractor_version": "1.1.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-11-17T07:08:04.262Z"
+      "last_audited": "2026-11-19T01:19:30.124Z"
     },
     "src/layouts/Base.astro": {
       "content_sha256": "9bf1f016b112b06cfc168cc153cb99003f922bf4ca036ed3103c792be67b86a4",
@@ -68,11 +68,11 @@
       "last_audited": "2026-06-28T17:51:01.139Z"
     },
     "src/data": {
-      "input_hashes_sha256": "49633b1d8bd0e69f9047a84db29ae418369c503677cd961bfdd29725628cc3b7",
+      "input_hashes_sha256": "a9188810892df749b6c734f1e0219a3ca7f32e1fe9426c01ea2b2adae1d7b077",
       "spec_path": "docs/spec/src/data/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-11-17T07:08:04.288Z"
+      "last_audited": "2026-11-19T01:19:30.150Z"
     },
     "src/layouts": {
       "input_hashes_sha256": "ab863663a05a37decef5b300a4d4a86cda7427a66e0d9d7726c03a2d71ba6e25",

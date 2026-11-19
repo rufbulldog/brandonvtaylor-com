@@ -6,7 +6,7 @@ file_count: 1
 total_lines: 402
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-11-17T07:08:04.288Z
+last_audited: 2026-11-19T01:19:30.150Z
 ---
 
 # src/data — Module Spec
