@@ -117,6 +117,34 @@ export const education = [
   },
 ];
 
+/**
+ * Issued patents (from LinkedIn), newest first. `number` is the bare US patent
+ * number; links go to Google Patents. `topic` groups them on the Science view.
+ */
+export const patents: {
+  title: string;
+  number: string;
+  issued: string;
+  topic: "Voice & messaging" | "Calling & augmented reality" | "Documents & content";
+}[] = [
+  { title: "Communicating announcements", number: "11776541", issued: "2023-10-03", topic: "Voice & messaging" },
+  { title: "Message management for communal account", number: "11632345", issued: "2023-04-18", topic: "Voice & messaging" },
+  { title: "Communicating announcements", number: "11024303", issued: "2021-06-01", topic: "Voice & messaging" },
+  { title: "Voice-based messaging", number: "10917758", issued: "2021-02-09", topic: "Voice & messaging" },
+  { title: "Communicating announcements", number: "10706845", issued: "2020-07-07", topic: "Voice & messaging" },
+  { title: "Augmented reality", number: "10643394", issued: "2020-05-05", topic: "Calling & augmented reality" },
+  { title: "Voice-based messaging", number: "9986394", issued: "2018-05-29", topic: "Voice & messaging" },
+  { title: "Communication system", number: "9516255", issued: "2016-12-06", topic: "Calling & augmented reality" },
+  { title: "Extensible realtime delegation for calls, conferences and collaboration", number: "9036804", issued: "2015-05-19", topic: "Calling & augmented reality" },
+  { title: "Bypassing routing rules during a conversation", number: "8379637", issued: "2013-02-19", topic: "Calling & augmented reality" },
+  { title: "Methods and systems for providing a customized user interface for viewing and editing meta-data", number: "8171394", issued: "2012-05-01", topic: "Documents & content" },
+  { title: "Methods and systems for incorporating meta-data in document content", number: "7877420", issued: "2011-01-25", topic: "Documents & content" },
+  { title: "Redirection to local copies of server-based files", number: "7743026", issued: "2010-06-22", topic: "Documents & content" },
+  { title: "Providing smart user interfaces based on document open and/or edit context", number: "7627827", issued: "2009-12-01", topic: "Documents & content" },
+  { title: "Initiating distribution of server based content via web-enabled device", number: "7606873", issued: "2009-10-20", topic: "Documents & content" },
+  { title: "Methods and systems for creating document schema", number: "7480665", issued: "2009-01-20", topic: "Documents & content" },
+];
+
 /** Testimonials — LinkedIn recommendations and peer / direct-report quotes. */
 export const testimonials: {
   quote: string;
@@ -166,7 +194,7 @@ export const testimonials: {
 export const stats = [
   { value: "25 yrs", label: "shipping products" },
   { value: "$1.5B+", label: "annual revenue impact" },
-  { value: "18", label: "issued patents" },
+  { value: String(patents.length), label: "issued patents" },
   { value: "30+", label: "person org led" },
 ];
 

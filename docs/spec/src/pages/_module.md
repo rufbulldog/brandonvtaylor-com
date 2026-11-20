@@ -3,16 +3,16 @@ type: l2-module
 spec_version: 1
 path: src/pages
 file_count: 7
-total_lines: 1905
+total_lines: 1995
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-11-20T06:41:24.010Z
+last_audited: 2026-11-20T09:05:41.383Z
 ---
 
 # src/pages — Module Spec
 
 **Folder:** `src/pages`
-**Files:** 7 · **Lines:** 1905
+**Files:** 7 · **Lines:** 1995
 
 ## File inventory
 
@@ -24,7 +24,7 @@ last_audited: 2026-11-20T06:41:24.010Z
 | [`management.astro`](./management.md) | 301 |  |
 | [`product.astro`](./product.md) | 384 |  |
 | [`resume.astro`](./resume.md) | 65 |  |
-| [`science.astro`](./science.md) | 324 |  |
+| [`science.astro`](./science.md) | 414 |  |
 
 ## Internal-only files
 
