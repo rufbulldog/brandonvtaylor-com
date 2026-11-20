@@ -1,112 +1,305 @@
 ---
-import Base from "../layouts/Base.astro";
-import Experience from "../components/Experience.astro";
-import Projects from "../components/Projects.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Icon from "../components/Icon.astro";
-import { profile, about, stats, education, leadership } from "../data/resume";
+// The chooser: one career, four ways to read it.
+import View from "../layouts/View.astro";
+import { views } from "../data/views";
+import { profile, stats } from "../data/resume";
 
 const title = `${profile.name} — ${profile.role}`;
 const description =
-	"Brandon V. Taylor — engineering and product leader in Seattle. Amazon principal; previously Microsoft (Skype, Skype on HoloLens, Bing Mobile). Builder of cross-platform apps.";
+  "Brandon V. Taylor — engineering and product leader in Seattle. Pick a view: product, engineering, science or management.";
 ---
 
-<Base title={title} description={description}>
-	<section class="hero container">
-		<div class="hero-top">
-			<div class="hero-text">
-				<p class="eyebrow">{profile.location}</p>
-				<h1 class="hero-name">{profile.name}</h1>
-				<p class="hero-role">{profile.role}</p>
-				<p class="hero-blurb">{profile.blurb}</p>
-				<div class="hero-cta">
-					<a class="btn btn-primary" href="/resume">View resume</a>
-					<a class="btn btn-social btn-linkedin" href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
-					<a class="btn btn-social btn-github" href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
-					<a class="btn" href="#projects">See projects</a>
-				</div>
-			</div>
-			<img class="hero-photo" src={profile.photo} alt={profile.name} width="210" height="210" />
-		</div>
-		<ul class="stats">
-			{
-				stats.map((s) => (
-					<li>
-						<span class="stat-value">{s.value}</span>
-						<span class="stat-label">{s.label}</span>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+<View
+  title={title}
+  description={description}
+  bare
+  fonts="family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,wght@0,400;1,400"
+>
+  <main class="chooser wrap">
+    <header class="top">
+      <a class="me" href="/">
+        <img src={profile.photo} alt="" width="44" height="44" />
+        <span>{profile.name}</span>
+      </a>
+      <nav aria-label="Links">
+        <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+        <a href={profile.github} target="_blank" rel="noopener">GitHub</a>
+        <a href="/resume">Résumé</a>
+      </nav>
+    </header>
 
-	<section id="about" class="section container accent-blue">
-		<h2 class="section-title">About</h2>
-		<div class="prose">
-			{about.map((p) => <p>{p}</p>)}
-		</div>
-	</section>
+    <section class="intro">
+      <p class="eyebrow">{profile.role} · {profile.location}</p>
+      <h1>
+        One career, four ways to read it. <em>Who's visiting?</em>
+      </h1>
+      <p class="lede">
+        25 years shipping products across Office, Bing, Skype, HoloLens, Alexa
+        and amazon.com. Pick the lens closest to your own work and the site
+        rearranges itself around what you care about.
+      </p>
+      <p class="continue" hidden>
+        Welcome back — <a href="/">continue as <span></span></a>
+      </p>
+    </section>
 
-	<section id="experience" class="section container accent-violet">
-		<h2 class="section-title">Experience</h2>
-		<Experience />
-	</section>
+    <section class="cards" aria-label="Choose a view">
+      {
+        views.map((v) => (
+          <a class={`card card-${v.id}`} href={v.href} data-view={v.id}>
+            <span class="card-kicker">
+              {v.id === "engineering" ? "$ whoami --eng" : v.label}
+            </span>
+            <span class="card-head">{v.headline}</span>
+            <span class="card-pitch">{v.pitch}</span>
+            <span class="card-cta">{v.cta}</span>
+          </a>
+        ))
+      }
+    </section>
 
-	<section id="leadership" class="section container accent-green">
-		<h2 class="section-title">How I Lead</h2>
-		<ul class="leadership-list">
-			{
-				leadership.map((l) => (
-					<li class="leadership-item">
-						<h3>{l.title}</h3>
-						<p>{l.body}</p>
-					</li>
-				))
-			}
-		</ul>
-	</section>
+    <footer class="stats">
+      <span>Or read <a href="/all">everything on one page</a>.</span>
+      <span>{stats.map((s) => `${s.value} ${s.label}`).join(" · ")}</span>
+    </footer>
+  </main>
+</View>
 
-	<section id="projects" class="section container accent-teal">
-		<h2 class="section-title">Projects</h2>
-		<p class="section-lead">
-			Things I build with AI outside the day job — a way to stay close to the
-			craft while running an engineering org.
-		</p>
-		<Projects />
-	</section>
+<script is:inline>
+  // Offer "Continue as …" for a returning visitor's last view.
+  try {
+    const last = localStorage.getItem("bvt-view");
+    const card = last && document.querySelector(`.card[data-view="${last}"]`);
+    if (card) {
+      const p = document.querySelector(".continue");
+      p.querySelector("a").href = card.getAttribute("href");
+      p.querySelector("span").textContent = card
+        .querySelector(".card-kicker")
+        .textContent.replace("$ whoami --eng", "Engineering");
+      p.hidden = false;
+      card.classList.add("is-last");
+    }
+  } catch (e) {}
+</script>
 
-	<section id="testimonials" class="section container accent-amber">
-		<h2 class="section-title">What others say</h2>
-		<Testimonials />
-	</section>
+<style is:global>
+  body[data-view="chooser"] {
+    --view-bg: #f2f1ec;
+    --view-fg: #111;
+    --view-muted: #5a5952;
+    --view-line: #dad8cf;
+    --view-ui-font: Inter, system-ui, sans-serif;
+  }
+</style>
 
-	<section id="education" class="section container accent-osu">
-		<h2 class="section-title">Education</h2>
-		<ul class="edu-list">
-			{
-				education.map((e) => (
-					<li class="edu-item">
-						<div>
-							<h3 class="edu-school">{e.school}</h3>
-							<p class="edu-degree">{e.degree}</p>
-							{e.note && <p class="edu-note">{e.note}</p>}
-						</div>
-						{e.period && <span class="edu-period">{e.period}</span>}
-					</li>
-				))
-			}
-		</ul>
-	</section>
+<style>
+  .chooser {
+    font-family: Inter, system-ui, sans-serif;
+    padding-block: 2.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .me {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #111;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .me img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .top nav {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 14px;
+  }
+  .top nav a {
+    color: #111;
+  }
+  .intro {
+    max-width: 52rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .eyebrow {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #5a5952;
+  }
+  h1 {
+    margin: 0;
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-size: clamp(2.75rem, 7vw, 5.25rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  h1 em {
+    color: #5a5952;
+  }
+  .lede {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: #3a3934;
+    max-width: 40rem;
+  }
+  .continue {
+    margin: 0;
+    font-size: 15px;
+  }
+  .continue a {
+    color: #111;
+    font-weight: 600;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+  }
+  .card {
+    flex: 1 1 15.5rem;
+    min-height: 21rem;
+    border-radius: 20px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-decoration: none;
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+  .card:hover,
+  .card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(17, 17, 17, 0.14);
+  }
+  .card.is-last {
+    outline: 3px solid #111;
+    outline-offset: 3px;
+  }
+  .card-kicker {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .card-head {
+    flex: 1;
+  }
+  .card-pitch {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .card-cta {
+    font-size: 14px;
+    font-weight: 600;
+  }
 
-	<section id="contact" class="section container accent-rose">
-		<h2 class="section-title">Contact</h2>
-		<p class="section-lead" style="margin-bottom:1.25rem">
-			Always happy to talk product, platform, and team building.
-		</p>
-		<div class="contact-actions">
-			<a class="btn btn-social btn-email" href="mailto:brtaylorapps@gmail.com"><Icon name="mail" />Email</a>
-			<a class="btn btn-social btn-linkedin" href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
-			<a class="btn btn-social btn-github" href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
-		</div>
-	</section>
-</Base>
+  .card-product {
+    background: #fff;
+    color: #1b1a17;
+    border: 1px solid #e2e0d8;
+  }
+  .card-product .card-kicker {
+    color: #b23a1e;
+  }
+  .card-product .card-head {
+    font-family: "Instrument Serif", serif;
+    font-size: 2.5rem;
+    line-height: 1.02;
+  }
+  .card-product .card-pitch {
+    color: #4a4943;
+  }
+
+  .card-engineering {
+    background: #0e1411;
+    color: #d7e2d9;
+    font-family: "JetBrains Mono", monospace;
+  }
+  .card-engineering .card-kicker {
+    color: #7fe0a0;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .card-engineering .card-head {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #f2f7f3;
+  }
+  .card-engineering .card-pitch {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #a9b7ad;
+  }
+  .card-engineering .card-cta {
+    color: #7fe0a0;
+  }
+
+  .card-science {
+    background: #fbfbf8;
+    color: #1d2330;
+    border: 1px solid #d4d8e0;
+  }
+  .card-science .card-kicker,
+  .card-science .card-cta {
+    color: #2849a8;
+  }
+  .card-science .card-head {
+    font-family: "Source Serif 4", serif;
+    font-size: 1.9rem;
+    line-height: 1.15;
+  }
+  .card-science .card-pitch {
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    color: #444b5a;
+  }
+
+  .card-management {
+    background: #16284a;
+    color: #f3f5f9;
+  }
+  .card-management .card-kicker,
+  .card-management .card-cta {
+    color: #f2c46d;
+  }
+  .card-management .card-head {
+    font-family: "Instrument Serif", serif;
+    font-size: 2.4rem;
+    line-height: 1.05;
+  }
+  .card-management .card-pitch {
+    color: #c9d2e3;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #5a5952;
+    border-top: 1px solid #dad8cf;
+    padding-top: 1.25rem;
+  }
+  .stats a {
+    color: #111;
+  }
+</style>

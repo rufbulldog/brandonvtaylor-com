@@ -1,0 +1,112 @@
+---
+import Base from "../layouts/Base.astro";
+import Experience from "../components/Experience.astro";
+import Projects from "../components/Projects.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Icon from "../components/Icon.astro";
+import { profile, about, stats, education, leadership } from "../data/resume";
+
+const title = `${profile.name} — ${profile.role}`;
+const description =
+	"Brandon V. Taylor — engineering and product leader in Seattle. Amazon principal; previously Microsoft (Skype, Skype on HoloLens, Bing Mobile). Builder of cross-platform apps.";
+---
+
+<Base title={title} description={description}>
+	<section class="hero container">
+		<div class="hero-top">
+			<div class="hero-text">
+				<p class="eyebrow">{profile.location}</p>
+				<h1 class="hero-name">{profile.name}</h1>
+				<p class="hero-role">{profile.role}</p>
+				<p class="hero-blurb">{profile.blurb}</p>
+				<div class="hero-cta">
+					<a class="btn btn-primary" href="/resume">View resume</a>
+					<a class="btn btn-social btn-linkedin" href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
+					<a class="btn btn-social btn-github" href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
+					<a class="btn" href="#projects">See projects</a>
+				</div>
+			</div>
+			<img class="hero-photo" src={profile.photo} alt={profile.name} width="210" height="210" />
+		</div>
+		<ul class="stats">
+			{
+				stats.map((s) => (
+					<li>
+						<span class="stat-value">{s.value}</span>
+						<span class="stat-label">{s.label}</span>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section id="about" class="section container accent-blue">
+		<h2 class="section-title">About</h2>
+		<div class="prose">
+			{about.map((p) => <p>{p}</p>)}
+		</div>
+	</section>
+
+	<section id="experience" class="section container accent-violet">
+		<h2 class="section-title">Experience</h2>
+		<Experience />
+	</section>
+
+	<section id="leadership" class="section container accent-green">
+		<h2 class="section-title">How I Lead</h2>
+		<ul class="leadership-list">
+			{
+				leadership.map((l) => (
+					<li class="leadership-item">
+						<h3>{l.title}</h3>
+						<p>{l.body}</p>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section id="projects" class="section container accent-teal">
+		<h2 class="section-title">Projects</h2>
+		<p class="section-lead">
+			Things I build with AI outside the day job — a way to stay close to the
+			craft while running an engineering org.
+		</p>
+		<Projects />
+	</section>
+
+	<section id="testimonials" class="section container accent-amber">
+		<h2 class="section-title">What others say</h2>
+		<Testimonials />
+	</section>
+
+	<section id="education" class="section container accent-osu">
+		<h2 class="section-title">Education</h2>
+		<ul class="edu-list">
+			{
+				education.map((e) => (
+					<li class="edu-item">
+						<div>
+							<h3 class="edu-school">{e.school}</h3>
+							<p class="edu-degree">{e.degree}</p>
+							{e.note && <p class="edu-note">{e.note}</p>}
+						</div>
+						{e.period && <span class="edu-period">{e.period}</span>}
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<section id="contact" class="section container accent-rose">
+		<h2 class="section-title">Contact</h2>
+		<p class="section-lead" style="margin-bottom:1.25rem">
+			Always happy to talk product, platform, and team building.
+		</p>
+		<div class="contact-actions">
+			<a class="btn btn-social btn-email" href="mailto:brtaylorapps@gmail.com"><Icon name="mail" />Email</a>
+			<a class="btn btn-social btn-linkedin" href={profile.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" />LinkedIn</a>
+			<a class="btn btn-social btn-github" href={profile.github} target="_blank" rel="noopener"><Icon name="github" />GitHub</a>
+		</div>
+	</section>
+</Base>

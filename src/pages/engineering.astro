@@ -1,0 +1,411 @@
+---
+// Engineering view — an interactive terminal. Every command's output is
+// rendered at build time from resume.ts into a hidden .tpls block; the script only
+// clones them, so the page reads fine with JS off (whoami + ls are pre-run).
+import View from "../layouts/View.astro";
+import { profile, experience, projects, leadership, stats } from "../data/resume";
+
+const title = `${profile.name} — Engineering`;
+const description =
+  "Brandon V. Taylor for engineers: an interactive terminal with projects, architecture, stacks and a career git log.";
+
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-$/, "");
+const statVal = (label: string) => stats.find((s) => s.label.includes(label))?.value;
+const year = (period: string) => period.match(/\d{4}/)?.[0] ?? "";
+
+type Line = { t: string; k?: "hl" | "dim" | "link"; href?: string };
+const principal = experience[0];
+
+const commands: { cmd: string; lines: Line[]; chip?: boolean }[] = [
+  {
+    cmd: "whoami",
+    lines: [
+      { t: `${principal.title} @ ${principal.company}`, k: "hl" },
+      { t: "30+ person org: EMs + teams, product, applied science (Seattle & Vancouver, BC)" },
+      { t: "owns: GenAI engineering standards · AI evaluation platform · amazon.com performance" },
+      { t: "# type `help`, or click a command below", k: "dim" },
+    ],
+  },
+  {
+    cmd: "ls ~/projects",
+    lines: projects.map((p) => ({
+      t: `drwxr-xr-x  ${(slug(p.name) + "/").padEnd(26)}${p.tags.join(" · ")}`,
+    })),
+  },
+  ...projects.map((p) => ({
+    cmd: `cat ${slug(p.name)}/README.md`,
+    chip: p.name === "Ferry Tracker",
+    lines: [
+      { t: `# ${p.name} (${p.period})`, k: "hl" as const },
+      { t: p.blurb },
+      ...(p.href ? [{ t: `→ ${p.href.replace("https://", "")}`, k: "link" as const, href: p.href }] : []),
+    ],
+  })),
+  {
+    cmd: "aws stack family-retreat",
+    chip: true,
+    lines: [
+      { t: "family-retreat · serverless", k: "hl" },
+      { t: "auth      Cognito" },
+      { t: "api       API Gateway → Lambda" },
+      { t: "data      DynamoDB · S3" },
+      { t: "mail      SES (booking approvals)" },
+      { t: "ai        Bedrock (cabin assistant)" },
+      { t: "edge      CloudFront" },
+      { t: "client    React Native (iOS · Android · web)", k: "dim" },
+    ],
+  },
+  {
+    cmd: "cat turntable-speed/dsp.md",
+    chip: true,
+    lines: [
+      { t: "# dependency-free, unit-tested signal-processing core", k: "dim" },
+      { t: "track the label's rotation frame by frame" },
+      { t: "  → phase correlation between frames → angular velocity" },
+      { t: "  → FFT over the speed series → wow & flutter" },
+      { t: "no test record, no strobe disc", k: "hl" },
+    ],
+  },
+  {
+    cmd: "git log --career",
+    chip: true,
+    lines: [
+      ...experience.map((r, i) => ({
+        t: `${year(r.period)}  ${i === 0 ? "(HEAD) " : ""}${r.company.toLowerCase()}: ${r.title}`,
+        k: i === 0 ? ("hl" as const) : undefined,
+      })),
+      { t: "B.S. Computer Science, Oregon State · minors: business, chemistry", k: "dim" },
+    ],
+  },
+  {
+    cmd: "cat ~/.leadership",
+    chip: true,
+    lines: leadership.map((l) => ({ t: `# ${l.title}  ${l.body}` })),
+  },
+  {
+    cmd: "stats",
+    lines: stats.map((s) => ({ t: `${s.value.padEnd(8)}${s.label}` })),
+  },
+  {
+    cmd: "contact",
+    chip: true,
+    lines: [
+      { t: `github    ${profile.github.replace("https://", "")}`, k: "link", href: profile.github },
+      { t: `linkedin  ${profile.linkedin.replace("https://www.", "")}`, k: "link", href: profile.linkedin },
+      { t: "resume    /resume", k: "link", href: "/resume" },
+    ],
+  },
+];
+
+const help: Line[] = [
+  { t: "available commands:", k: "dim" },
+  ...commands.map((c) => ({ t: `  ${c.cmd}` })),
+  { t: "  clear", k: "dim" },
+];
+commands.unshift({ cmd: "help", chip: true, lines: help });
+
+const preRun = ["whoami", "ls ~/projects"];
+const chips = commands.filter((c) => c.chip).map((c) => c.cmd);
+---
+
+<View
+  title={title}
+  description={description}
+  view="engineering"
+  brand="~/brandonvtaylor.com"
+  fonts="family=JetBrains+Mono:wght@400;600;700"
+>
+  <main class="eng wrap">
+    <section class="term" aria-label="Terminal">
+      <div class="term-bar" aria-hidden="true">
+        <span></span><span></span><span></span>
+        <em>brandon@seattle: ~ — zsh</em>
+      </div>
+      <div class="term-body" id="term-body">
+        <div class="banner">
+          <h1>{profile.name}</h1>
+          <span>eng + product leader · Seattle · {statVal("shipping")} shipping · {statVal("patents")} patents</span>
+        </div>
+        <div id="term-out" aria-live="polite">
+          {
+            preRun.map((name) => {
+              const c = commands.find((x) => x.cmd === name)!;
+              return (
+                <div class="entry">
+                  <div class="prompt-line">
+                    <span class="ps1">brandon@seattle</span>
+                    <span class="ps2">:~$ </span>
+                    <span class="typed">{c.cmd}</span>
+                  </div>
+                  {c.lines.map((l) => (
+                    <div class={`ln ${l.k ?? ""}`}>{l.href ? <a href={l.href}>{l.t}</a> : l.t}</div>
+                  ))}
+                </div>
+              );
+            })
+          }
+        </div>
+        <form class="prompt-line input-line" id="term-form" autocomplete="off">
+          <label for="term-input">
+            <span class="ps1">brandon@seattle</span><span class="ps2">{":~$\u00a0"}</span>
+          </label>
+          <input
+            id="term-input"
+            type="text"
+            spellcheck="false"
+            autocapitalize="off"
+            placeholder="type help, or click a command below"
+          />
+        </form>
+      </div>
+      <div class="chips" aria-label="Suggested commands">
+        {chips.map((c) => <button type="button" data-cmd={c}>{c}</button>)}
+        <button type="button" data-cmd="clear">clear</button>
+      </div>
+    </section>
+    <p class="aside">
+      Not a terminal person? Read <a href="/all">everything on one page</a> · <a
+        href={profile.github}>github.com/rufbulldog</a
+      >
+    </p>
+
+
+    <div class="tpls" hidden>
+      {
+        commands.map((c) => (
+          <div data-cmd={c.cmd}>
+            {c.lines.map((l) => (
+              <div class={`ln ${l.k ?? ""}`}>{l.href ? <a href={l.href}>{l.t}</a> : l.t}</div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </main>
+</View>
+
+<script>
+  const out = document.getElementById("term-out")!;
+  const body = document.getElementById("term-body")!;
+  const form = document.getElementById("term-form") as HTMLFormElement;
+  const input = document.getElementById("term-input") as HTMLInputElement;
+  const history: string[] = [];
+  let hIndex = 0;
+
+  function line(cls: string, text: string) {
+    const d = document.createElement("div");
+    d.className = `ln ${cls}`;
+    d.textContent = text;
+    return d;
+  }
+
+  function run(raw: string) {
+    const cmd = raw.trim().replace(/\s+/g, " ");
+    if (!cmd) return;
+    history.push(cmd);
+    hIndex = history.length;
+    if (cmd === "clear") {
+      out.replaceChildren();
+      return;
+    }
+    const entry = document.createElement("div");
+    entry.className = "entry";
+    const p = document.createElement("div");
+    p.className = "prompt-line";
+    p.innerHTML = '<span class="ps1">brandon@seattle</span><span class="ps2">:~$ </span>';
+    const typed = document.createElement("span");
+    typed.className = "typed";
+    typed.textContent = cmd;
+    p.append(typed);
+    entry.append(p);
+    const tpl = document.querySelector<HTMLElement>(
+      `.tpls > [data-cmd="${CSS.escape(cmd)}"]`,
+    );
+    if (tpl) entry.append(...Array.from(tpl.children, (n) => n.cloneNode(true)));
+    else entry.append(line("dim", `zsh: command not found: ${cmd} (try help)`));
+    out.append(entry);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    run(input.value);
+    input.value = "";
+  });
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowUp" && hIndex > 0) {
+      input.value = history[--hIndex];
+      e.preventDefault();
+    } else if (e.key === "ArrowDown") {
+      hIndex = Math.min(history.length, hIndex + 1);
+      input.value = history[hIndex] ?? "";
+      e.preventDefault();
+    }
+  });
+  document.querySelectorAll<HTMLButtonElement>(".chips button").forEach((b) =>
+    b.addEventListener("click", () => {
+      run(b.dataset.cmd!);
+      input.focus({ preventScroll: true });
+    }),
+  );
+  body.addEventListener("click", (e) => {
+    if (!(e.target as HTMLElement).closest("a") && !getSelection()?.toString()) input.focus();
+  });
+</script>
+
+<style is:global>
+  body[data-view="engineering"] {
+    --view-bg: #0a0f0c;
+    --view-fg: #cfdcd2;
+    --view-muted: #7c8d81;
+    --view-line: #22322a;
+    --view-accent: #7fe0a0;
+    --view-hover: #16211b;
+    --view-active-bg: #7fe0a0;
+    --view-active-fg: #0a0f0c;
+    --view-ui-font: "JetBrains Mono", ui-monospace, monospace;
+  }
+  body[data-view="engineering"] .vbar-brand {
+    color: #7fe0a0;
+    font-weight: 600;
+    font-size: 14px;
+  }
+</style>
+
+<style>
+  .eng {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    color: #cfdcd2;
+    padding-block: 1.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .eng a {
+    color: #7fe0a0;
+  }
+  .term {
+    border: 1px solid #22322a;
+    border-radius: 12px;
+    background: #0e1511;
+    overflow: hidden;
+  }
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #22322a;
+    font-size: 12px;
+    color: #7c8d81;
+  }
+  .term-bar span {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #3a4a40;
+  }
+  .term-bar em {
+    margin-left: 8px;
+    font-style: normal;
+  }
+  .term-body {
+    padding: 1.25rem 1.4rem;
+    height: min(64vh, 40rem);
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .banner {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 13px;
+    color: #7c8d81;
+  }
+  .banner h1 {
+    margin: 0;
+    color: #7fe0a0;
+    font-size: 1.25rem;
+  }
+  #term-out {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  #term-out :global(.entry) {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .term :global(.ps1) {
+    color: #7fe0a0;
+  }
+  .term :global(.ps2) {
+    color: #7c8d81;
+  }
+  .term :global(.typed) {
+    color: #f2f7f3;
+  }
+  .term :global(.ln) {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+  .term :global(.ln.hl) {
+    color: #f2c46d;
+  }
+  .term :global(.ln.dim) {
+    color: #7c8d81;
+  }
+  .input-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .input-line input {
+    flex: 1;
+    min-width: 12rem;
+    background: transparent;
+    border: 0;
+    color: #f2f7f3;
+    font: inherit;
+    caret-color: #7fe0a0;
+    padding: 0;
+  }
+  .input-line input:focus {
+    outline: none;
+  }
+  .input-line input::placeholder {
+    color: #56665b;
+  }
+  .chips {
+    border-top: 1px solid #22322a;
+    padding: 12px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chips button {
+    min-height: 44px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #22322a;
+    background: #121c16;
+    color: #cfdcd2;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .chips button:hover {
+    background: #1c2a21;
+    color: #fff;
+  }
+  .aside {
+    margin: 0;
+    font-size: 12px;
+    color: #7c8d81;
+  }
+</style>

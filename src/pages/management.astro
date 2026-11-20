@@ -1,0 +1,300 @@
+---
+// Management view — a narrative memo with testimonials alongside.
+import View from "../layouts/View.astro";
+import { memo, turnaround } from "../data/views";
+import { profile, testimonials, leadership } from "../data/resume";
+
+const title = `${profile.name} — Management`;
+const description =
+  "Brandon V. Taylor for engineering and product leaders: how he builds and runs a 30+ person multi-discipline org, in his words and his team's.";
+
+// Short pull-quotes for the sidebar (full text lives in resume.ts).
+const pulls = [
+  { match: "sets a high bar", text: "Brandon sets a high bar but creates a safe space for his teams to innovate and be creative in meeting that bar." },
+  { match: "timely, specific feedback", text: "He never left me uncertain about next steps, which built my confidence and accelerated my development." },
+  { match: "tricky cross-team", text: "Brandon excels at handling tricky cross-team situations with clarity and fairness." },
+  { match: "psychologically safe", text: "Brandon creates a psychologically safe environment that encourages experimentation with ambitious ideas." },
+].map((p) => {
+  const t = testimonials.find((x) => x.quote.includes(p.match))!;
+  return { text: p.text, who: `${t.name}, ${t.title}` };
+});
+---
+
+<View
+  title={title}
+  description={description}
+  view="management"
+  fonts="family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600"
+>
+  <main class="mgt wrap">
+    <article class="memo">
+      <dl class="memo-head">
+        <dt>To</dt><dd>Leaders hiring for a multi-discipline org</dd>
+        <dt>From</dt><dd>{profile.name}, Principal Manager, Amazon</dd>
+        <dt>Re</dt><dd><strong>How I build and run teams</strong></dd>
+      </dl>
+
+      <section>
+        <h1>I set a high bar and make it safe to aim for it.</h1>
+        <p>
+          Today I lead a 30+ person org at Amazon: engineering managers and
+          their teams, a product function, and a growing applied-science team
+          across Seattle and Vancouver, BC. We own central amazon.com platforms
+          that thousands of engineers build on daily. I run it as one team, not
+          three disciplines that meet in reviews.
+        </p>
+      </section>
+
+      {
+        memo.map((s, i) => (
+          <section>
+            <h2>
+              {i + 1} · {s.heading}
+            </h2>
+            {s.paragraphs.map((p) => (
+              <p set:html={p} />
+            ))}
+            {i === 0 && (
+              <div class="kpis">
+                {turnaround.map((k) => (
+                  <div>
+                    <span class="kpi-label">{k.label}</span>
+                    <span class="kpi-value">{k.value}</span>
+                    <span class="kpi-label">within six months</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        ))
+      }
+
+      <section>
+        <h2>{memo.length + 1} · Principles</h2>
+        <ul class="principles">
+          {
+            leadership.map((l) => (
+              <li>
+                <strong>{l.title}</strong> {l.body}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </article>
+
+    <aside class="side">
+      <div class="glance">
+        <img src={profile.photo} alt="" width="72" height="72" />
+        <span class="glance-title">Org at a glance</span>
+        <div class="glance-grid">
+          <div><b>30+</b><span>people</span></div>
+          <div><b>3</b><span>disciplines</span></div>
+          <div><b>2</b><span>sites</span></div>
+          <div><b>0</b><span>attrition in turnaround</span></div>
+        </div>
+      </div>
+      {
+        pulls.map((q) => (
+          <blockquote>
+            <p>“{q.text}”</p>
+            <footer>{q.who}</footer>
+          </blockquote>
+        ))
+      }
+      <a class="pdf" href={profile.resumePdf} download>Download résumé (PDF)</a>
+    </aside>
+  </main>
+</View>
+
+<style is:global>
+  body[data-view="management"] {
+    --view-bg: #f3f4f7;
+    --view-fg: #1a2233;
+    --view-muted: #5a6478;
+    --view-line: #dce0e8;
+    --view-accent: #16284a;
+    --view-active-bg: #16284a;
+    --view-active-fg: #fff;
+    --view-ui-font: Inter, system-ui, sans-serif;
+  }
+  body[data-view="management"] {
+    --view-bar-bg: #16284a;
+    --view-bar-fg: #fff;
+    --view-bar-muted: #c9d2e3;
+    --view-bar-line: #16284a;
+    --view-hover: rgba(255, 255, 255, 0.1);
+    --view-active-bg: #f2c46d;
+    --view-active-fg: #16284a;
+  }
+</style>
+
+<style>
+  .mgt {
+    padding-block: 3rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: flex-start;
+    font-family: Inter, system-ui, sans-serif;
+    color: #1a2233;
+  }
+  .memo {
+    flex: 999 1 38rem;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #dce0e8;
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+  .memo-head {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    border-bottom: 2px solid #16284a;
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+  .memo-head dt {
+    color: #5a6478;
+  }
+  .memo-head dd {
+    margin: 0;
+  }
+  .memo section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .memo p {
+    margin: 0;
+  }
+  h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  h2 {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #16284a;
+  }
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    font-family: Inter, sans-serif;
+  }
+  @media (max-width: 560px) {
+    .kpis {
+      grid-template-columns: 1fr;
+    }
+  }
+  .kpis div {
+    background: #f3f4f7;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .kpi-label {
+    font-size: 13px;
+    color: #5a6478;
+    line-height: 1.4;
+  }
+  .kpi-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .principles {
+    margin: 0;
+    padding-left: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .side {
+    flex: 1 1 18rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .glance {
+    background: #16284a;
+    color: #fff;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .glance img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .glance-title {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f2c46d;
+  }
+  .glance-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+  .glance-grid div {
+    display: flex;
+    flex-direction: column;
+  }
+  .glance-grid b {
+    font-size: 1.9rem;
+    font-weight: 600;
+  }
+  .glance-grid span {
+    font-size: 13px;
+    color: #c9d2e3;
+  }
+  blockquote {
+    margin: 0;
+    background: #fff;
+    border: 1px solid #dce0e8;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  blockquote p {
+    margin: 0;
+    font-family: "Source Serif 4", serif;
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
+  blockquote footer {
+    font-size: 13px;
+    color: #5a6478;
+  }
+  .pdf {
+    background: #f2c46d;
+    color: #16284a;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.9rem;
+    min-height: 44px;
+  }
+  .pdf:hover {
+    background: #f5d28d;
+  }
+</style>

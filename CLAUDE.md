@@ -16,10 +16,10 @@ npm run preview   # astro preview (serve the built site)
 
 ## Repository Layout
 
-- `src/pages/` — routes (`index.astro`).
-- `src/layouts/` — page shells (`Base.astro`).
+- `src/pages/` — routes: `index.astro` is the persona chooser; `product`, `engineering`, `science`, `management` are the persona views; `all.astro` is the classic everything-on-one-page site; `resume.astro`.
+- `src/layouts/` — page shells: `Base.astro` (classic `/all` + `/resume`), `View.astro` (chooser + persona views: head, "Viewing as" switcher, footer; pages theme it via `--view-*` CSS vars).
 - `src/components/` — Astro components (`Experience.astro`, `Projects.astro`).
-- `src/data/` — content data (`resume.ts`).
+- `src/data/` — content data: `resume.ts` (shared facts), `views.ts` (persona list + view-only copy like case studies and the memo).
 - `public/` — static assets served as-is.
 - `astro.config.mjs` — Astro config. `amplify.yml` — Amplify build (`npm run build`, artifacts in `dist/`).
 

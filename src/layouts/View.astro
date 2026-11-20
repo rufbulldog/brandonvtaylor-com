@@ -1,0 +1,214 @@
+---
+// Shell for the persona views (/product, /engineering, /science, /management)
+// and the chooser (/). Each page brings its own look; this layout only owns the
+// <head>, the shared "Viewing as" switcher and the footer. Pages theme the
+// switcher and footer through the --view-* custom properties on <body>.
+import { views, type ViewId } from "../data/views";
+import { profile } from "../data/resume";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Current view; omitted on the chooser. */
+  view?: ViewId;
+  /** Google Fonts css2 `family=` query (everything after `?`). */
+  fonts?: string;
+  /** Brand text shown at the left of the top bar. */
+  brand?: string;
+  /** Hide the shared top bar (the page draws its own). */
+  bare?: boolean;
+}
+
+const { title, description, view, fonts, brand = profile.name, bare = false } =
+  Astro.props;
+const canonical = new URL(Astro.url.pathname, "https://brandonvtaylor.com");
+const year = 2026;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    {
+      fonts && (
+        <>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+            rel="stylesheet"
+            href={`https://fonts.googleapis.com/css2?${fonts}&display=swap`}
+          />
+        </>
+      )
+    }
+  </head>
+  <body data-view={view ?? "chooser"}>
+    {
+      !bare && (
+        <header class="vbar">
+          <div class="vbar-inner">
+            <a class="vbar-brand" href="/">
+              {brand}
+            </a>
+            <nav class="vbar-views" aria-label="Choose a view">
+              <span class="vbar-label">Viewing as</span>
+              {views.map((v) => (
+                <a
+                  href={v.href}
+                  aria-current={v.id === view ? "page" : undefined}
+                >
+                  {v.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </header>
+      )
+    }
+
+    <slot />
+
+    <footer class="vfoot">
+      <div class="vfoot-inner">
+        <span>© {year} {profile.name}</span>
+        <nav aria-label="More">
+          <a href="/all">Everything on one page</a>
+          <a href="/resume">Résumé</a>
+          <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={profile.github} target="_blank" rel="noopener">GitHub</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script is:inline define:vars={{ view }}>
+      // Remember the last view so the chooser can offer "Continue as …".
+      if (view) {
+        try {
+          localStorage.setItem("bvt-view", view);
+        } catch (e) {}
+      }
+    </script>
+
+    <style is:global>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--view-bg, #f2f1ec);
+        color: var(--view-fg, #111);
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+      }
+      :focus-visible {
+        outline: 2px solid var(--view-accent, currentColor);
+        outline-offset: 3px;
+      }
+      .wrap {
+        width: 100%;
+        max-width: 72rem;
+        margin-inline: auto;
+        padding-inline: 1.5rem;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+    <style>
+      .vbar {
+        background: var(--view-bar-bg, transparent);
+        border-bottom: 1px solid var(--view-bar-line, var(--view-line, rgba(0, 0, 0, 0.1)));
+        font-family: var(--view-ui-font, system-ui, sans-serif);
+        font-size: 14px;
+      }
+      .vbar-inner {
+        max-width: 72rem;
+        margin-inline: auto;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .vbar-brand {
+        color: var(--view-bar-fg, var(--view-fg));
+        text-decoration: none;
+        font-family: var(--view-brand-font, inherit);
+        font-weight: 700;
+        font-size: 1.15rem;
+      }
+      .vbar-views {
+        display: flex;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .vbar-label {
+        color: var(--view-bar-muted, var(--view-muted));
+        margin-right: 0.4rem;
+      }
+      .vbar-views a {
+        color: var(--view-bar-fg, var(--view-fg));
+        text-decoration: none;
+        padding: 0.5rem 0.85rem;
+        border-radius: 999px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .vbar-views a:hover {
+        background: var(--view-hover, rgba(0, 0, 0, 0.06));
+      }
+      .vbar-views a[aria-current="page"] {
+        background: var(--view-active-bg, #111);
+        color: var(--view-active-fg, #fff);
+      }
+      .vfoot {
+        border-top: 1px solid var(--view-line, rgba(0, 0, 0, 0.1));
+        font-family: var(--view-ui-font, system-ui, sans-serif);
+        font-size: 14px;
+        color: var(--view-muted);
+      }
+      .vfoot-inner {
+        max-width: 72rem;
+        margin-inline: auto;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .vfoot nav {
+        display: flex;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+      .vfoot a {
+        color: var(--view-muted);
+      }
+      .vfoot a:hover {
+        color: var(--view-fg);
+      }
+    </style>
+  </body>
+</html>

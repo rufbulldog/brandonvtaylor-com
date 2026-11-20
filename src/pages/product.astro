@@ -1,0 +1,383 @@
+---
+// Product view — editorial, outcome-led case studies.
+import View from "../layouts/View.astro";
+import { caseStudies } from "../data/views";
+import { profile, projects, testimonials } from "../data/resume";
+
+const title = `${profile.name} — Product`;
+const description =
+  "Product case studies from Brandon V. Taylor: Alexa calling, Skype on HoloLens, bSeattle and amazon.com latency, plus weekend apps.";
+const pad = (n: number) => String(n).padStart(2, "0");
+const quote = testimonials.find((t) => t.name === "Jessica Glago")!;
+---
+
+<View
+  title={title}
+  description={description}
+  view="product"
+  fonts="family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Inter:wght@400;500;600"
+>
+  <main class="pm">
+    <header class="hero wrap">
+      <div class="hero-head">
+        <p class="kicker">Selected work · 2001 — now</p>
+        <h1>I make new behaviors feel <em>obvious.</em></h1>
+      </div>
+      <p class="hero-lede">
+        The first calls on Alexa. AR video calls that reached orbit. A
+        restaurant app that held 4.5 stars for its whole life. Each one started
+        with a person who didn't yet know they wanted it.
+      </p>
+    </header>
+
+    <section class="wrap cases" aria-label="Case studies">
+      {
+        caseStudies.map((c, i) => (
+          <article class="case">
+            <div class="case-head">
+              <span class="case-num">{pad(i + 1)}</span>
+              <h2>{c.title}</h2>
+              <p class="case-meta">{c.meta}</p>
+            </div>
+            <div class="case-body">
+              {c.video && (
+                <div class="video">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${c.video}`}
+                    title={c.videoTitle}
+                    loading="lazy"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  />
+                </div>
+              )}
+              {c.figures ? (
+                <div class="figures">
+                  {c.figures.map((f) => (
+                    <div class="figure">
+                      <span class="figure-value">{f.value}</span>
+                      <span class="figure-label">{f.label}</span>
+                    </div>
+                  ))}
+                  <p class="figure-note">{c.bet}</p>
+                </div>
+              ) : (
+                <div class="pbo">
+                  <div>
+                    <h3>Problem</h3>
+                    <p>{c.problem}</p>
+                  </div>
+                  <div>
+                    <h3>Bet</h3>
+                    <p>{c.bet}</p>
+                  </div>
+                  <div>
+                    <h3>Outcome</h3>
+                    <p>{c.outcome}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </section>
+
+    <section class="weekend">
+      <div class="wrap">
+        <div class="weekend-head">
+          <h2>Weekend products, <em>shipped</em></h2>
+          <p>
+            I build real apps with AI to stay close to the craft, for real
+            people with real deadlines: a ferry, a birthday, a family cabin.
+          </p>
+        </div>
+        <div class="phones">
+          {
+            projects.map((p) => {
+              const shot = p.screens?.[0];
+              return (
+                <figure>
+                  {shot && (
+                    <img
+                      src={shot.src}
+                      alt={`${p.name}: ${shot.caption ?? "screenshot"}`}
+                      loading="lazy"
+                    />
+                  )}
+                  <figcaption>
+                    <strong>
+                      {p.href ? <a href={p.href}>{p.name}</a> : p.name}
+                    </strong>
+                    <span>{shot?.caption}</span>
+                  </figcaption>
+                </figure>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap quote">
+      <blockquote>
+        <p>
+          “He is extremely passionate about delivering high quality products and
+          understanding user needs. He clearly articulates the product vision to
+          rally the team and drive the product to success.”
+        </p>
+        <footer>
+          {
+            quote.href ? (
+              <a href={quote.href} target="_blank" rel="noopener">
+                {quote.name}
+              </a>
+            ) : (
+              quote.name
+            )
+          }, {quote.title}
+        </footer>
+      </blockquote>
+    </section>
+  </main>
+</View>
+
+<style is:global>
+  body[data-view="product"] {
+    --view-bg: #fbfaf7;
+    --view-fg: #1b1a17;
+    --view-muted: #6a675e;
+    --view-line: #e6e3da;
+    --view-accent: #b23a1e;
+    --view-active-bg: #1b1a17;
+    --view-active-fg: #fbfaf7;
+    --view-ui-font: Inter, system-ui, sans-serif;
+    --view-brand-font: Fraunces, serif;
+  }
+</style>
+
+<style>
+  .pm {
+    font-family: Inter, system-ui, sans-serif;
+    color: #1b1a17;
+  }
+  .pm a {
+    color: #b23a1e;
+  }
+  .hero {
+    padding-block: 5rem 3.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    align-items: flex-end;
+  }
+  .hero-head {
+    flex: 3 1 34rem;
+  }
+  .kicker {
+    margin: 0 0 1.5rem;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b23a1e;
+    font-weight: 600;
+  }
+  h1 {
+    margin: 0;
+    font-family: Fraunces, serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+  h1 em {
+    font-weight: 500;
+  }
+  .hero-lede {
+    flex: 2 1 20rem;
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #45433c;
+  }
+  .case {
+    border-top: 2px solid #1b1a17;
+    padding-block: 2.5rem 3.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+  }
+  .case-head {
+    flex: 1 1 17rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .case-num {
+    font-family: Fraunces, serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: #b23a1e;
+    line-height: 1;
+  }
+  .case h2 {
+    margin: 0;
+    font-family: Fraunces, serif;
+    font-weight: 500;
+    font-size: 2.1rem;
+    line-height: 1.1;
+  }
+  .case-meta {
+    margin: 0;
+    font-size: 14px;
+    color: #6a675e;
+  }
+  .case-body {
+    flex: 2 1 34rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .pbo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  @media (max-width: 640px) {
+    .pbo {
+      grid-template-columns: 1fr;
+    }
+  }
+  .pbo h3 {
+    margin: 0 0 0.5rem;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .pbo p,
+  .figure-note {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #45433c;
+  }
+  .video {
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #1b1a17;
+  }
+  .video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  .figures {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+  }
+  .figure {
+    display: flex;
+    flex-direction: column;
+  }
+  .figure-value {
+    font-family: Fraunces, serif;
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1;
+  }
+  .figure-label {
+    font-size: 14px;
+    color: #6a675e;
+  }
+  .figure-note {
+    flex: 1 1 16rem;
+  }
+  .weekend {
+    background: #1b1a17;
+    color: #fbfaf7;
+    padding-block: 4.5rem;
+    margin-top: 1.5rem;
+  }
+  .weekend .wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+  .weekend-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .weekend h2 {
+    margin: 0;
+    font-family: Fraunces, serif;
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    line-height: 1.05;
+  }
+  .weekend-head p {
+    margin: 0;
+    max-width: 26rem;
+    color: #c8c4b8;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .phones {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  @media (max-width: 760px) {
+    .phones {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .phones figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .phones img {
+    width: 100%;
+    aspect-ratio: 9 / 19;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 22px;
+  }
+  .phones figcaption {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  .phones figcaption strong a {
+    color: #fbfaf7;
+  }
+  .phones figcaption span {
+    color: #c8c4b8;
+  }
+  .quote {
+    padding-block: 5rem;
+  }
+  .quote blockquote {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  .quote p {
+    margin: 0 0 1.25rem;
+    font-family: Fraunces, serif;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.3;
+  }
+  .quote footer {
+    font-size: 15px;
+    color: #6a675e;
+  }
+</style>
