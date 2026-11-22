@@ -12,11 +12,12 @@ Personal site for Brandon V. Taylor — a static **Astro** site hosted on **AWS 
 npm run dev       # astro dev (local dev server)
 npm run build     # astro build → dist/ (exactly what Amplify runs)
 npm run preview   # astro preview (serve the built site)
+npm run resume:pdf  # build, then print /resume-pdf → public/Brandon-Taylor-Resume.pdf (commit the PDF)
 ```
 
 ## Repository Layout
 
-- `src/pages/` — routes: `index.astro` is the persona chooser; `product`, `engineering`, `science`, `management` are the persona views; `all.astro` is the classic everything-on-one-page site; `resume.astro`.
+- `src/pages/` — routes: `index.astro` is the persona chooser; `product`, `engineering`, `science`, `management` are the persona views; `all.astro` is the classic everything-on-one-page site; `resume.astro`; `resume-pdf.astro` is the unlinked print layout the résumé PDF is generated from — edit `resume.ts`, then run `npm run resume:pdf`.
 - `src/layouts/` — page shells: `Base.astro` (classic `/all` + `/resume`), `View.astro` (chooser + persona views: head, "Viewing as" switcher, footer; pages theme it via `--view-*` CSS vars).
 - `src/components/` — Astro components (`Experience.astro`, `Projects.astro`).
 - `src/data/` — content data: `resume.ts` (shared facts), `views.ts` (persona list + view-only copy like case studies and the memo).

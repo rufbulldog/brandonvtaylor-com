@@ -2,17 +2,17 @@
 type: l2-module
 spec_version: 1
 path: src/pages
-file_count: 7
-total_lines: 1995
+file_count: 8
+total_lines: 2214
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-11-20T09:05:41.383Z
+last_audited: 2026-11-22T21:32:29.748Z
 ---
 
 # src/pages — Module Spec
 
 **Folder:** `src/pages`
-**Files:** 7 · **Lines:** 1995
+**Files:** 8 · **Lines:** 2214
 
 ## File inventory
 
@@ -23,7 +23,8 @@ last_audited: 2026-11-20T09:05:41.383Z
 | [`index.astro`](./index.md) | 306 |  |
 | [`management.astro`](./management.md) | 301 |  |
 | [`product.astro`](./product.md) | 384 |  |
-| [`resume.astro`](./resume.md) | 65 |  |
+| [`resume-pdf.astro`](./resume-pdf.md) | 202 |  |
+| [`resume.astro`](./resume.md) | 82 |  |
 | [`science.astro`](./science.md) | 414 |  |
 
 ## Internal-only files
@@ -35,6 +36,7 @@ Files in this folder not imported by any file outside it (candidates for cleanup
 - `index.astro`
 - `management.astro`
 - `product.astro`
+- `resume-pdf.astro`
 - `resume.astro`
 - `science.astro`
 

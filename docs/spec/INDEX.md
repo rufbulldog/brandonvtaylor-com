@@ -1,7 +1,7 @@
 ---
 type: index
 spec_version: 1
-generated_at: 2026-11-20T09:05:41.388Z
+generated_at: 2026-11-22T21:32:29.751Z
 ---
 
 # Spec catalog
@@ -20,6 +20,10 @@ Cross-cutting views. Start here for "how does <thing> work" questions.
 
 One per source folder. Lists files + public surface + internal-only files.
 
+### `scripts/`
+
+- [`scripts/`](scripts/_module.md)
+
 ### `src/`
 
 - [`src/components/`](src/components/_module.md)
@@ -29,7 +33,7 @@ One per source folder. Lists files + public surface + internal-only files.
 
 ## L1 — Files
 
-15 file-level specs covering every `.ts`, `.tsx`, `.mjs`, `.js`, and `template.yaml` under the repo. Navigate via the L2 module specs above, or browse `docs/spec/` directly.
+17 file-level specs covering every `.ts`, `.tsx`, `.mjs`, `.js`, and `template.yaml` under the repo. Navigate via the L2 module specs above, or browse `docs/spec/` directly.
 
 ## See also
 

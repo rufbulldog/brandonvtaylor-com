@@ -28,6 +28,8 @@ export interface Project {
   name: string;
   period: string;
   blurb: string;
+  /** One-line version for the résumé PDF; projects without it are left off. */
+  resumeLine?: string;
   tags: string[];
   /** Public repo URL. Renders a "View code" link when set. */
   href?: string;
@@ -105,7 +107,16 @@ export const profile = {
   github: "https://github.com/rufbulldog",
   photo: "/me-avatar.webp",
   resumePdf: "/Brandon-Taylor-Resume.pdf",
+  email: "brtaylorapps@gmail.com",
+  site: "brandonvtaylor.com",
 };
+
+/** Résumé PDF summary paragraph (see src/pages/resume-pdf.astro). */
+export const resumeSummary =
+  "Engineering and product leader with 25 years building consumer web and mobile products by bringing engineering, applied science, and product together. At Amazon I lead a 30+ person organization spanning engineering, applied science, and product — owning GenAI engineering standards, an AI evaluation platform, and customer-facing performance.";
+
+/** Résumé "Patents & Recognition" extras (the patent line is generated). */
+export const recognition = ["Certified SCRUM Product Owner."];
 
 export const education = [
   {
@@ -338,6 +349,8 @@ export const experience: Role[] = [
 export const projects: Project[] = [
   {
     name: "Ferry Tracker",
+    resumeLine:
+      "real-time Washington State Ferries tracker on iOS, Android, and web with personalized “leave by” predictions; serverless AWS CDK backend.",
     period: "2025",
     blurb:
       "Real-time tracker for Washington State Ferries on iOS, Android, and web. Live vessel positions, upcoming departures, and drive-up space availability, plus personalized “leave by” times from a trimmed-mean model over your own recorded crossings. Serverless AWS CDK backend on the WSDOT ferry APIs.",
@@ -367,6 +380,8 @@ export const projects: Project[] = [
   },
   {
     name: "Family Retreat Booking",
+    resumeLine:
+      "full-stack shared-cabin booking app with approval workflow, tasks, photos, and an AI chat assistant on the AWS stack.",
     period: "2023 — Present",
     blurb:
       "Full-stack app where an extended family reserves days at a shared vacation home — with a booking-approval workflow, shared task tracking, local weather and tides, photo sharing, and an AI chat assistant. Built hands-on across the AWS stack (Cognito, Lambda, DynamoDB, API Gateway, SES, Bedrock, S3, CloudFront) behind a cross-platform React Native front end.",
@@ -416,6 +431,8 @@ export const projects: Project[] = [
   },
   {
     name: "Turntable Speed",
+    resumeLine:
+      "measures turntable RPM and wow-and-flutter in real time via an FFT and phase-correlation vision pipeline.",
     period: "2025",
     blurb:
       "Point a phone camera at a spinning record and it measures the turntable's true speed and wow-and-flutter in real time — tracking the label's rotation frame-by-frame through an FFT and phase-correlation pipeline, no test record or strobe disc required. The signal-processing core is dependency-free and unit-tested.",

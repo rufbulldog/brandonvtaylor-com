@@ -3,10 +3,10 @@ type: l3-system
 spec_version: 1
 name: architecture
 discovered_from: code-graph + repo config
-resource_count: 4
+resource_count: 5
 extractor_version: 1.0.2
 renderer_version: 1.0.2
-last_audited: 2026-11-20T06:41:24.010Z
+last_audited: 2026-11-22T21:32:29.748Z
 ---
 
 # Architecture overview — System Spec
@@ -15,7 +15,7 @@ Repo-level view of how the source folders depend on each other, aggregated from 
 
 ## Module dependency graph
 
-Folders that import across folder boundaries (4 of 4). Self-contained folders are listed below.
+Folders that import across folder boundaries (4 of 5). Self-contained folders are listed below.
 
 ```mermaid
 flowchart LR
@@ -29,6 +29,12 @@ flowchart LR
   n_src_pages --> n_src_data
   n_src_pages --> n_src_layouts
 ```
+
+## Standalone modules (1)
+
+Folders with no cross-folder imports — self-contained (e.g. individual Lambdas, scripts, leaf utilities).
+
+- `scripts`
 
 ## Cross-refs
 

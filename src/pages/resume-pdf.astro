@@ -1,0 +1,201 @@
+---
+// Print layout for the downloadable résumé. Not linked from the site;
+// `npm run resume:pdf` builds the site and prints this page to
+// public/Brandon-Taylor-Resume.pdf, so the PDF always matches resume.ts.
+import {
+  profile,
+  experience,
+  education,
+  projects,
+  patents,
+  recognition,
+  resumeSummary,
+  stats,
+} from "../data/resume";
+
+const revenue = stats.find((s) => s.label.includes("revenue"))?.value ?? "";
+const summary = `${resumeSummary} ${patents.length} issued patents; ${revenue} in estimated annual revenue impact.`;
+const dash = (p: string) => p.replace(/\s*[—–-]\s*/, " — ");
+const splitCompany = (c: string) => {
+  const parts = c.split(" — ");
+  return { head: parts[0], tail: parts.slice(1).join(" — ") };
+};
+const firstYear = patents.at(-1)!.issued.slice(0, 4);
+const lastYear = patents[0].issued.slice(0, 4);
+const patentLine = `${patents.length} issued U.S. patents (${firstYear}–${lastYear}) across voice messaging and announcements, calling and augmented reality, and document management.`;
+const resumeProjects = projects.filter((p) => p.resumeLine);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>{profile.name} — Résumé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>{profile.name}</h1>
+      <p class="role">Engineering &amp; Product Leader</p>
+      <p class="contact">
+        {profile.location} <span>|</span>
+        {profile.email} <span>|</span>
+        <a href={`https://${profile.site}`}>{profile.site}</a> <span>|</span>
+        <a href={profile.linkedin}>{profile.linkedin.replace("https://www.", "")}</a>
+      </p>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p>{summary}</p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      {
+        experience.map((r) => {
+          const { head, tail } = splitCompany(r.company);
+          return (
+            <div class="role">
+              <div class="role-line">
+                <span>
+                  <strong>
+                    {head}
+                    {tail && ` — ${tail}`}
+                  </strong>{" "}
+                  — {r.title}
+                </span>
+                <span class="period">{dash(r.period)}</span>
+              </div>
+              {r.location && <p class="loc">{r.location}</p>}
+              <ul>
+                {r.highlights.map((h) => (
+                  <li>{h.replace(" - ", " — ")}</li>
+                ))}
+              </ul>
+            </div>
+          );
+        })
+      }
+    </section>
+
+    <section>
+      <h2>Selected Projects</h2>
+      <ul>
+        {
+          resumeProjects.map((p) => (
+            <li>
+              {p.name} ({p.period.replace(" — ", "–")}): {p.resumeLine}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul>
+        {education.map((e) => <li>{e.school} — {e.degree.replace(" — ", "; ")}.</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Patents &amp; Recognition</h2>
+      <ul>
+        <li>{patentLine}</li>
+        {recognition.map((r) => <li>{r}</li>)}
+      </ul>
+    </section>
+
+    <style is:global>
+      @page {
+        size: Letter;
+        margin: 0.6in 0.75in;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.35;
+        color: #111;
+        max-width: 7in;
+      }
+      @media screen {
+        body {
+          margin: 0.6in auto;
+        }
+      }
+      a {
+        color: #1a5fb4;
+      }
+      h1 {
+        margin: 0;
+        font-size: 22pt;
+        color: #1f3a5f;
+      }
+      .role {
+        break-inside: avoid;
+      }
+      p.role {
+        margin: 2pt 0 4pt;
+        color: #666;
+        font-size: 11pt;
+      }
+      .contact {
+        margin: 0;
+        font-size: 10pt;
+      }
+      .contact span {
+        color: #666;
+        margin: 0 6pt;
+      }
+      h2 {
+        margin: 16pt 0 6pt;
+        padding-bottom: 3pt;
+        border-bottom: 1.2pt solid #1f3a5f;
+        color: #1f3a5f;
+        font-size: 11.5pt;
+        text-transform: uppercase;
+        break-after: avoid;
+      }
+      section p {
+        margin: 0;
+      }
+      .role {
+        margin-bottom: 9pt;
+      }
+      .role-line {
+        display: flex;
+        justify-content: space-between;
+        gap: 12pt;
+      }
+      .period {
+        color: #444;
+        white-space: nowrap;
+        min-width: 1.5in;
+      }
+      .loc {
+        margin: 0;
+        font-style: italic;
+        color: #666;
+        font-size: 9.5pt;
+      }
+      ul {
+        margin: 2pt 0 0;
+        padding-left: 18pt;
+      }
+      li {
+        margin-bottom: 2pt;
+      }
+    </style>
+  </body>
+</html>

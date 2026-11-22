@@ -1,7 +1,14 @@
 {
   "version": 2,
-  "generated_at": "2026-11-20T09:05:41.388Z",
+  "generated_at": "2026-11-22T21:32:29.751Z",
   "files": {
+    "scripts/resume-pdf.mjs": {
+      "content_sha256": "215b7ac9c4e6d28a3a3140fc923266e62cd194a548a2fe58f1c7a5ea139b9207",
+      "spec_path": "docs/spec/scripts/resume-pdf.md",
+      "extractor_version": "1.1.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-11-22T21:32:29.281Z"
+    },
     "src/components/Experience.astro": {
       "content_sha256": "b1df205500dac9cc81fa2cde23df5a400ba859d45a25c0d441ca072da895a97a",
       "spec_path": "docs/spec/src/components/Experience.md",
@@ -31,11 +38,11 @@
       "last_audited": "2026-06-28T17:51:01.104Z"
     },
     "src/data/resume.ts": {
-      "content_sha256": "26e044d4fb1ef722ee1c27566dd5d7a38657b9b1c90cf91a311b4ec50cc402d0",
+      "content_sha256": "df4b908c937bfe7917a4693b19d97eb7203a57593ee9a941d394e43cb9957b19",
       "spec_path": "docs/spec/src/data/resume.md",
       "extractor_version": "1.1.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-11-20T09:05:41.323Z"
+      "last_audited": "2026-11-22T21:32:29.614Z"
     },
     "src/data/views.ts": {
       "content_sha256": "12a3c173991db82ca6cc9a11335cf4d30119479cf824ba9b17c9a2205f3cb3de",
@@ -93,12 +100,19 @@
       "renderer_version": "1.0.0",
       "last_audited": "2026-11-20T06:41:23.995Z"
     },
+    "src/pages/resume-pdf.astro": {
+      "content_sha256": "2bad4f713511ae6a7a78c408a3b777cc57373cc26f1cc889cb3d97059977c5bc",
+      "spec_path": "docs/spec/src/pages/resume-pdf.md",
+      "extractor_version": "1.0.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-11-22T21:32:29.714Z"
+    },
     "src/pages/resume.astro": {
-      "content_sha256": "8c95a81c9818bd90f09c8ada5fd8ddacda481a083f5062416de4313cc906df39",
+      "content_sha256": "3324da9bcada1fa930716c396b859bf0ae5940013d7540688dc81992205707a4",
       "spec_path": "docs/spec/src/pages/resume.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-06-28T18:49:41.476Z"
+      "last_audited": "2026-11-22T21:32:29.726Z"
     },
     "src/pages/science.astro": {
       "content_sha256": "1b4ced4cd7e9cc5206a70bc237bbe5f311b967b2fb54cfba77a51764edfd81b3",
@@ -109,6 +123,13 @@
     }
   },
   "modules": {
+    "scripts": {
+      "input_hashes_sha256": "dcc7449ee97d1da4332c7675e5f4d0c3cbce7f53946897054a94d64d97e820c4",
+      "spec_path": "docs/spec/scripts/_module.md",
+      "extractor_version": "1.0.0",
+      "renderer_version": "1.0.0",
+      "last_audited": "2026-11-22T21:32:29.747Z"
+    },
     "src/components": {
       "input_hashes_sha256": "bca7f79da0965af6b7c959c8446d877e9046c4438d0f31256b8c7bb150509b1a",
       "spec_path": "docs/spec/src/components/_module.md",
@@ -117,11 +138,11 @@
       "last_audited": "2026-06-28T17:51:01.139Z"
     },
     "src/data": {
-      "input_hashes_sha256": "c2be188669a5e43030090a559900c1eb6f286088b5deca13b5f341ed7ddd6fe2",
+      "input_hashes_sha256": "1984398ed174b18432fbb3f7c05e0ef0b981b2840e9d31a19892d16ffddd9fd0",
       "spec_path": "docs/spec/src/data/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-11-20T09:05:41.383Z"
+      "last_audited": "2026-11-22T21:32:29.747Z"
     },
     "src/layouts": {
       "input_hashes_sha256": "4fd0594a1b6b73b3efe6c97e1371918de64b00f601d3a099a2f3fb2174beff7c",
@@ -131,20 +152,20 @@
       "last_audited": "2026-11-20T06:41:24.010Z"
     },
     "src/pages": {
-      "input_hashes_sha256": "b459987b279c826ceee60ea5217c080782e6f9e5cd79983ae23df0470bc4f38b",
+      "input_hashes_sha256": "b1f3de726bc47edcfccec4b4d6739fba00a8322355f927181efccd8af70b7289",
       "spec_path": "docs/spec/src/pages/_module.md",
       "extractor_version": "1.0.0",
       "renderer_version": "1.0.0",
-      "last_audited": "2026-11-20T09:05:41.383Z"
+      "last_audited": "2026-11-22T21:32:29.748Z"
     }
   },
   "systems": {
     "architecture": {
-      "input_sha256": "ea0789dda4ce54f8b2df063021e81dd91ac6e04fca7d366388e4e7ec48a55c22",
+      "input_sha256": "cf298f355c74f9adffe68457db867c6cb92ec74d8648c9e3796dec9a8d7db8e0",
       "spec_path": "docs/spec/_systems/architecture.md",
       "extractor_version": "1.0.2",
       "renderer_version": "1.0.2",
-      "last_audited": "2026-11-20T06:41:24.014Z"
+      "last_audited": "2026-11-22T21:32:29.751Z"
     },
     "ci-cd": {
       "input_sha256": "4c287810b3d529ccaf7957071949c67946f29b07ea55a11db7ef4916cf318dba",

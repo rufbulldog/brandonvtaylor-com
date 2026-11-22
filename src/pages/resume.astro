@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
-import { profile, about, experience, education, projects } from "../data/resume";
+import { profile, about, experience, education, projects, patents, recognition } from "../data/resume";
 
 const title = `Resume — ${profile.name}`;
 const description = `Full résumé for ${profile.name}, ${profile.role} in ${profile.location}.`;
@@ -48,6 +48,23 @@ const description = `Full résumé for ${profile.name}, ${profile.role} in ${pro
 					</div>
 				))
 			}
+
+			<h2>Patents &amp; Recognition</h2>
+			<div class="role">
+				<h3>{patents.length} issued U.S. patents</h3>
+				<ul>
+					{patents.map((p) => (
+						<li>
+							{p.title} —{" "}
+							<a href={`https://patents.google.com/patent/US${p.number}`} target="_blank" rel="noopener">
+								US {Number(p.number).toLocaleString("en-US")}
+							</a>{" "}
+							({p.issued.slice(0, 4)})
+						</li>
+					))}
+				</ul>
+				{recognition.map((r) => <p>{r}</p>)}
+			</div>
 
 			<h2>Selected Projects</h2>
 			{

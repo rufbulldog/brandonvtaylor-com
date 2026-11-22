@@ -2,16 +2,16 @@
 type: l1-file
 spec_version: 1
 source: src/data/resume.ts
-content_sha: 26e044d4fb1ef722ee1c27566dd5d7a38657b9b1c90cf91a311b4ec50cc402d0
+content_sha: df4b908c937bfe7917a4693b19d97eb7203a57593ee9a941d394e43cb9957b19
 extractor_version: 1.1.0
 renderer_version: 1.0.0
-last_audited: 2026-11-20T09:05:41.323Z
+last_audited: 2026-11-22T21:32:29.614Z
 ---
 
 # resume.ts
 
 **Path:** `src/data/resume.ts`
-**Lines:** 430
+**Lines:** 447
 **Language:** TypeScript
 
 ## Exports
@@ -23,6 +23,8 @@ last_audited: 2026-11-20T09:05:41.323Z
 | `journey` | const | `[ { label: "Microsoft Office", logo: "/logos/microsoft.svg", target: "#role-mic…` |
 | `imageCredits` | const | `[ { label: "Amazon logo", credit: "Amazon.com, Inc. / Koto", href: "https://com…` |
 | `profile` | const | `{ name: "Brandon V. Taylor", role: "Engineering & product leader", blurb: "I tu…` |
+| `resumeSummary` | const | `"Engineering and product leader with 25 years building consumer web and mobile …` |
+| `recognition` | const | `["Certified SCRUM Product Owner."]` |
 | `education` | const | `[ { school: "Oregon State University", degree: "B.S. Computer Science — minors …` |
 | `patents` | const | `{
   title: string;
