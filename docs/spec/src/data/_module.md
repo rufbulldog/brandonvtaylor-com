@@ -3,22 +3,22 @@ type: l2-module
 spec_version: 1
 path: src/data
 file_count: 2
-total_lines: 608
+total_lines: 609
 extractor_version: 1.0.0
 renderer_version: 1.0.0
-last_audited: 2026-11-22T21:32:29.747Z
+last_audited: 2026-11-22T21:55:57.283Z
 ---
 
 # src/data — Module Spec
 
 **Folder:** `src/data`
-**Files:** 2 · **Lines:** 608
+**Files:** 2 · **Lines:** 609
 
 ## File inventory
 
 | File | Lines | Purpose |
 |---|---|---|
-| [`resume.ts`](./resume.md) | 447 |  |
+| [`resume.ts`](./resume.md) | 448 |  |
 | [`views.ts`](./views.md) | 161 |  |
 
 ## Public surface

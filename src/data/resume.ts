@@ -248,6 +248,7 @@ export const experience: Role[] = [
       "GenAI engineering standards: lead a team that brings expert engineering standards to generative AI across the full software development lifecycle — plan, design, code, and test — for teams building experiences on amazon.com.",
       "AI evaluation platform: own a platform that scores AI quality through deterministic validators and LLM-as-a-judge evaluations, so internal teams can baseline and compare their agents, hooks, and skills as they iterate.",
       "Central Performance & Latency: cut amazon.com shopping latency ~40% (the fastest in years); the latency and quality work is estimated to drive $1.5B+ in annual revenue.",
+      "Central Observability: stood up distributed tracing and analytics across a 90,000+ service graph, so teams can see how a customer request flows end to end.",
     ],
     details: [
       "My org sits at the center of the amazon.com storefront — central platform charters that thousands of Amazon engineers build on every day. I run it as one multi-discipline team: engineering managers and their teams, a product function, and a growing applied-science team, spanning Seattle and Vancouver, BC.",

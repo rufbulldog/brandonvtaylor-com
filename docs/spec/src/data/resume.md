@@ -2,16 +2,16 @@
 type: l1-file
 spec_version: 1
 source: src/data/resume.ts
-content_sha: df4b908c937bfe7917a4693b19d97eb7203a57593ee9a941d394e43cb9957b19
+content_sha: 2a1ed352d9e528aa304b9ddeeb21a78948f2d1fdd8dce16a63ca247a285eec96
 extractor_version: 1.1.0
 renderer_version: 1.0.0
-last_audited: 2026-11-22T21:32:29.614Z
+last_audited: 2026-11-22T21:55:57.151Z
 ---
 
 # resume.ts
 
 **Path:** `src/data/resume.ts`
-**Lines:** 447
+**Lines:** 448
 **Language:** TypeScript
 
 ## Exports
